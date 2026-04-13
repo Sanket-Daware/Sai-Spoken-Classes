@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@1,6..72,200..800&family=Playfair+Display:ital,wght@1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #D32F2F; /* Academic Red */
+  --color-brand-primary-light: #FF5252;
+  --color-brand-secondary: #C2185B; /* Darker Pink for contrast */
+  --color-brand-secondary-light: #F06292; /* Bright Pink */
+  --color-brand-accent: #FBC02D; /* Academic Yellow */
+  --color-brand-accent-light: #FFFDE7;
+  --color-brand-surface: #FDF9F3; /* Light Academic Parchment Tint */
+  --color-brand-peach: #FFF3E0; /* Warm academic orange tint */
+  --color-brand-coral: #E64A19; /* Deep Orange */
+  --color-brand-red: #D32F2F;
+  --color-brand-text: #4E342E; /* Rich warm brown instead of dark grey */
+  --color-brand-text-muted: #8D6E63;
+  --color-brand-paper: #FDF9F3; /* Explicit parchment color */
+
+  --font-display: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-serif: "Newsreader", serif;
+  --font-signature: "Playfair Display", serif;
+
+  --radius-brand: 16px;
+
+  --shadow-warm: 0 10px 40px -15px rgba(211, 47, 47, 0.1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden; /* Prevent horizontal overlap overflow */
+  }
+  body {
+    background-color: var(--color-brand-paper);
+    /* Light Parchment Texture - Subtle academic paper feel */
+    background-image: 
+      radial-gradient(rgba(211, 47, 47, 0.02) 1px, transparent 1.5px),
+      linear-gradient(to right, rgba(211, 47, 47, 0.01) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(211, 47, 47, 0.01) 1px, transparent 1px);
+    background-size: 40px 40px, 80px 80px, 80px 80px;
+    background-attachment: fixed;
+    color: var(--color-brand-text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.25; /* Academic spacing */
+    color: var(--color-brand-primary);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-8 py-3 rounded-full bg-brand-primary text-white font-bold transition-all hover:bg-brand-primary-light active:scale-95 shadow-lg shadow-brand-primary/20;
+  }
+  .btn-secondary {
+    @apply px-8 py-3 rounded-full bg-brand-accent text-brand-text font-bold transition-all hover:bg-brand-accent-light active:scale-95 border-2 border-brand-accent;
+  }
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-md border border-brand-peach rounded-3xl p-8 shadow-warm;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes crack-glow {
+  0%, 100% { opacity: 0.3; filter: blur(40px); transform: translate(-50%, 0) scaleX(0.8); }
+  50% { opacity: 0.7; filter: blur(25px); transform: translate(-50%, 0) scaleX(1.2); }
+}
+
+.animate-crack-glow {
+  animation: crack-glow 3s ease-in-out infinite;
+}
+
+/* Fix for overlapping images/containers */
+section {
+  @apply relative z-10;
+}
+
+/* Custom Utilities */
+@utility no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

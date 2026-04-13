@@ -1,0 +1,643 @@
+import { useState, useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Link } from 'react-router-dom'
+import {
+  Target,
+  Rocket,
+  CircleCheck,
+  Users,
+  BookOpen,
+  Calendar,
+  Building,
+  ChevronDown,
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Mail,
+  MapPin,
+  Phone,
+  Play,
+  ArrowUpRight,
+  CheckCircle2,
+  MessageCircle,
+  Trophy,
+  GraduationCap
+} from 'lucide-react'
+
+const workingProcess = [
+  {
+    step: "01",
+    title: "Choose A Batch",
+    desc: "Select the timing that fits your schedule best.",
+    icon: Calendar,
+    position: "top" // for zig-zag
+  },
+  {
+    step: "02",
+    title: "Online Registration",
+    desc: "Quick and easy enrollment via our online portal.",
+    icon: BookOpen,
+    position: "bottom"
+  },
+  {
+    step: "03",
+    title: "Attend Sessions",
+    desc: "Join interactive sessions with expert mentors.",
+    icon: Users,
+    position: "top"
+  },
+  {
+    step: "04",
+    title: "Get Confident",
+    desc: "Graduate with fluent speaking and high confidence.",
+    icon: GraduationCap,
+    position: "bottom"
+  }
+]
+
+const whyChooseFeatures = [
+  {
+    title: "Expert Faculty",
+    desc: "Learn from coaches with 12+ years of institutional experience.",
+    icon: Trophy
+  },
+  {
+    title: "Technology Classes",
+    desc: "Digital tools and resources to accelerate your learning journey.",
+    icon: Target
+  },
+  {
+    title: "Proven Track Record",
+    desc: "5K+ successful students across various professional fields.",
+    icon: CheckCircle2
+  },
+  {
+    title: "Flexible Timing",
+    desc: "Tailored batches for students, professionals, and homemakers.",
+    icon: Calendar
+  }
+]
+
+const faculty = [
+  {
+    name: 'Priya Sharma',
+    role: 'Senior Spoken Coach',
+    img: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&auto=format&fit=crop'
+  },
+  {
+    name: 'Arjun Mehra',
+    role: 'Grammar & IELTS Specialist',
+    img: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop'
+  },
+  {
+    name: 'Sneha Kapoor',
+    role: 'Voice & Accent Expert',
+    img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop'
+  },
+  {
+    name: 'Vikram Singh',
+    role: 'Corporate Training Lead',
+    img: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop'
+  },
+  {
+    name: 'Rajesh Khanna',
+    role: 'Senior Interview Coach',
+    img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop'
+  },
+  {
+    name: 'Meera Nair',
+    role: 'Creative Writing Specialist',
+    img: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&auto=format&fit=crop'
+  },
+  {
+    name: 'Sanjay Verma',
+    role: 'Public Speaking Mentor',
+    img: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&auto=format&fit=crop'
+  },
+  {
+    name: 'Anjali Rao',
+    role: 'Personality Development',
+    img: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop'
+  }
+]
+
+export default function About() {
+  const [formState, setFormState] = useState({ name: '', phone: '', course: '' })
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const scrollRef = useRef(null)
+
+  const scroll = (direction) => {
+    const { current } = scrollRef
+    if (current) {
+      const card = current.querySelector('div')
+      if (card) {
+        const cardWidth = card.offsetWidth
+        const gap = 16 // gap-4 
+        const scrollAmount = cardWidth + gap
+        current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' })
+      }
+    }
+  }
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault()
+    setIsSubmitted(true)
+    setTimeout(() => setIsSubmitted(false), 5000)
+  }
+
+  return (
+    <div className="pt-0 font-sans bg-[#E0F7F9] overflow-hidden">
+      {/* Background Decorative Blobs */}
+      <div className="fixed inset-0 pointer-events-none -z-10">
+        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#00B4D8]/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#1D2A39]/5 rounded-full blur-[120px]" />
+      </div>
+
+      {/* Section 1: Hero Navy */}
+      <section className="pt-14 pb-20 lg:pt-30 lg:pb-12 relative bg-[#1D2A39]">
+        {/* Background Decorative Circle */}
+        <div className="absolute top-[10%] left-[-5%] w-[500px] h-[500px] bg-[#151E29] rounded-full blur-[120px] opacity-70 pointer-events-none" />
+        
+        <div className="container mx-auto px-6 md:px-8 lg:px-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column: Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-8"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#00B4D8]/10 rounded-full border border-[#00B4D8]/30">
+                <span className="text-[#00B4D8] text-[10px] font-bold uppercase tracking-widest">ABOUT US</span>
+              </div>
+
+              <h1 className="text-3xl lg:text-5xl font-display text-white font-medium leading-[1.1]">
+                We're Strategic <br />
+                <span className="text-[#00B4D8]">Spoken Classes</span> Academy
+              </h1>
+
+              <p className="text-lg text-gray-300 leading-relaxed max-w-xl font-light">
+                Founded in 2012, Sai Spoken Classes started with a vision: to make English communication accessible to everyone. We offer expert coaching across 15+ branches.
+              </p>
+
+              {/* Mobile Hero Image: Visible only on mobile */}
+              <div className="lg:hidden relative flex justify-center py-4">
+                <div className="relative w-full aspect-square rounded-full bg-[#151E29] p-4 flex items-center justify-center">
+                  <div className="w-full h-full rounded-full overflow-hidden border-4 border-[#151E29] shadow-2xl relative">
+                    <img
+                      src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000&auto=format&fit=crop"
+                      alt="Student with laptop mobile"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  
+                  {/* Floating Badges for Mobile */}
+                  <div className="absolute top-2 -left-2 bg-[#151E29] p-3 rounded-2xl shadow-lg border border-white/10 flex items-center gap-2 z-20 scale-90">
+                    <div className="w-8 h-8 bg-[#00B4D8] rounded-full flex items-center justify-center text-[#1D2A39]">
+                      <MessageCircle size={16} fill="currentColor" />
+                    </div>
+                    <div>
+                      <p className="text-[8px] font-bold text-gray-400 uppercase tracking-wider">Happy Students</p>
+                      <p className="text-xs font-bold text-white">5K+ Community</p>
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-2 -right-2 bg-[#151E29] p-3 rounded-2xl shadow-lg border border-white/10 flex items-center gap-2 z-20 scale-90">
+                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white">
+                      <CheckCircle2 size={16} fill="white" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-white">Verified Institute</p>
+                      <p className="text-[6px] text-gray-400 uppercase font-bold tracking-wider italic">Quality Education</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Stats & CTA Row */}
+              <div className="flex flex-row items-center gap-3 sm:gap-8 pt-4">
+                {/* Success Rate bubble */}
+                <div className="flex items-center gap-2 sm:gap-3 bg-[#151E29] p-2 sm:p-3 pr-3 sm:pr-6 rounded-full shadow-sm border border-white/5 flex-1 sm:flex-none">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#00B4D8] flex items-center justify-center text-[#1D2A39] shrink-0">
+                    <Trophy size={14} className="sm:hidden" />
+                    <Trophy size={18} className="hidden sm:block" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs sm:text-lg font-bold text-white">94%</p>
+                    <p className="text-[7px] sm:text-[10px] text-gray-400 uppercase font-bold tracking-wider truncate">Success</p>
+                  </div>
+                </div>
+
+                {/* Growth Rate bubble */}
+                <div className="flex items-center gap-2 sm:gap-3 bg-[#151E29] p-2 sm:p-3 pr-3 sm:pr-6 rounded-full shadow-sm border border-white/5 flex-1 sm:flex-none">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-[#1D2A39] border border-white/10 flex items-center justify-center text-[#00B4D8] shrink-0">
+                    <Target size={14} className="sm:hidden" />
+                    <Target size={18} className="hidden sm:block" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs sm:text-lg font-bold text-white">65%</p>
+                    <p className="text-[7px] sm:text-[10px] text-gray-400 uppercase font-bold tracking-wider truncate">Growth</p>
+                  </div>
+                </div>
+
+                {/* JOIN US Button */}
+                <Link to="/contact" className="inline-flex items-center justify-center gap-2 sm:gap-3 h-10 sm:h-14 px-4 sm:px-8 bg-[#00B4D8] text-[#1D2A39] rounded-full font-bold hover:bg-[#0096C7] transition-all group shrink-0">
+                  <span className="text-[10px] sm:text-base">JOIN US</span>
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/20 flex items-center justify-center">
+                    <ArrowRight size={14} className="sm:size-18 group-hover:translate-x-1 transition-transform text-[#1D2A39]" />
+                  </div>
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right Column: Image with organic mask & floating badges */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative hidden lg:flex justify-center"
+            >
+              <div className="relative w-[80%] aspect-square rounded-full bg-[#151E29]/50 p-6 flex items-center justify-center animate-pulse">
+                <div className="w-full h-full rounded-full overflow-hidden border-8 border-[#1D2A39] shadow-2xl relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000&auto=format&fit=crop"
+                    alt="Student with laptop"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#00B4D8]/10 to-transparent" />
+                </div>
+              </div>
+
+              {/* Floating Badges */}
+              <motion.div
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-12 -left-6 bg-[#151E29] p-4 rounded-3xl shadow-xl border border-white/10 flex items-center gap-3 z-20"
+              >
+                <div className="w-10 h-10 bg-[#FFD700] rounded-full flex items-center justify-center text-[#1D2A39]">
+                  <MessageCircle size={20} fill="currentColor" />
+                </div>
+                <div>
+                  <p className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">Happy Students</p>
+                  <p className="text-sm font-bold text-white">5K+ Community</p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute bottom-12 -right-6 bg-[#151E29] p-4 rounded-3xl shadow-xl border border-white/10 flex items-center gap-3 z-20"
+              >
+                <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white">
+                  <CheckCircle2 size={24} fill="white" />
+                </div>
+                <div>
+                  <p className="text-xs font-bold text-white">Verified Institute</p>
+                  <p className="text-[8px] text-gray-400 uppercase font-bold tracking-wider italic">Quality Education</p>
+                </div>
+              </motion.div>
+
+              {/* Founder Mini Badge */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 bg-[#151E29]/80 backdrop-blur-md px-6 py-2 rounded-full shadow-lg border border-white/10 flex items-center gap-3 z-30">
+                <div className="flex -space-x-2">
+                  <img src="https://i.pravatar.cc/100?img=11" className="w-6 h-6 rounded-full border-2 border-[#1D2A39]" alt="" />
+                  <img src="https://i.pravatar.cc/100?img=12" className="w-6 h-6 rounded-full border-2 border-[#1D2A39]" alt="" />
+                </div>
+                <p className="text-[10px] font-bold text-white">Mentored by Experts</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 2: Our Working Process */}
+      <section className="pt-0 pb-20 lg:pt-0 lg:pb-32 relative bg-[#E0F7F9]">
+        {/* Background Decorative Circle */}
+        <div className="absolute top-[10%] right-[-5%] w-[400px] h-[400px] bg-white rounded-full blur-[100px] opacity-60 pointer-events-none" />
+        
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#1D2A39]/10 rounded-full border border-[#1D2A39]/10 mb-6">
+            <span className="text-[#1D2A39] text-[10px] font-bold uppercase tracking-widest">OUR PROCESS</span>
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-display text-[#1D2A39] font-medium mb-20">
+            Our Working <span className="text-[#1D2A39] opacity-80 italic">Process</span>
+          </h2>
+
+          {/* Timeline Container */}
+          <div className="relative max-w-6xl mx-auto">
+            {/* Waving Connecting Line (Desktop) */}
+            <svg className="hidden lg:block absolute top-[35%] left-0 w-full h-40 pointer-events-none opacity-20" viewBox="0 0 1000 100">
+              <motion.path 
+                d="M0,50 Q250,150 500,50 T1000,50" 
+                fill="none" 
+                stroke="#1D2A39" 
+                strokeWidth="4" 
+                strokeDasharray="12 12" 
+                animate={{ 
+                  d: [
+                    "M0,50 Q250,150 500,50 T1000,50",
+                    "M0,50 Q250,-50 500,50 T1000,50",
+                    "M0,50 Q250,150 500,50 T1000,50"
+                  ]
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+            </svg>
+
+            {/* Waving Connecting Line (Mobile) */}
+            <svg className="lg:hidden absolute left-1/2 top-40 w-16 h-[80%] -translate-x-1/2 pointer-events-none opacity-20" viewBox="0 0 40 1000" preserveAspectRatio="none">
+              <motion.path 
+                d="M20,0 Q40,125 20,250 T20,500 T20,750 T20,1000" 
+                fill="none" 
+                stroke="#1D2A39" 
+                strokeWidth="4" 
+                strokeDasharray="12 12" 
+                animate={{ 
+                  d: [
+                    "M20,0 Q40,125 20,250 T20,500 T20,750 T20,1000",
+                    "M20,0 Q0,125 20,250 T20,500 T20,750 T20,1000",
+                    "M20,0 Q40,125 20,250 T20,500 T20,750 T20,1000"
+                  ]
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+            </svg>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+              {workingProcess.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className={`flex flex-col items-center ${item.position === 'bottom' ? 'lg:translate-y-16' : ''}`}
+                >
+                  <motion.div 
+                    animate={{ y: [0, -10, 0] }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ 
+                      y: {
+                        duration: 4, 
+                        repeat: Infinity, 
+                        ease: "easeInOut",
+                        delay: idx * 0.5 
+                      },
+                      scale: { duration: 0.2 }
+                    }}
+                    className="relative cursor-pointer group/icon"
+                  >
+                    <div className="w-24 h-24 bg-white/40 rounded-full flex items-center justify-center p-2 group-hover:scale-110 transition-transform duration-500">
+                      <div className="w-full h-full bg-white rounded-full shadow-lg flex items-center justify-center text-[#1D2A39]">
+                        <item.icon size={32} />
+                      </div>
+                    </div>
+                    {/* Step Number Circle */}
+                    <div className="absolute top-0 right-0 w-8 h-8 bg-[#1D2A39] rounded-full flex items-center justify-center text-white text-[10px] font-bold border-4 border-[#E0F7F9] shadow-md">
+                      {item.step}
+                    </div>
+                  </motion.div>
+                  <h3 className="text-xl font-bold text-[#1D2A39] mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed italic">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: Why Choose Us */}
+      <section className="py-24 lg:py-40 bg-[#E0F7F9] relative overflow-hidden">
+        <div className="container mx-auto px-8 md:px-16 lg:px-24 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Left: 2x2 Grid Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-10"
+            >
+              <div className="space-y-6">
+                <h2 className="text-4xl lg:text-5xl font-display text-[#1D2A39] font-medium leading-tight">
+                  Why Choose <span className="text-[#1D2A39] opacity-80">Us</span>
+                </h2>
+
+                {/* Mobile Image: Visible only on mobile, placed after heading */}
+                <div className="lg:hidden relative flex justify-center py-4">
+                  <div className="w-full aspect-[4/5] rounded-t-[80px] overflow-hidden shadow-2xl relative z-10 border-4 border-white">
+                    <img 
+                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop" 
+                      alt="Student Success Mobile" 
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-[#1D2A39]/10" />
+                  </div>
+                  <div className="absolute top-0 right-0 w-[60%] h-full bg-[#1D2A39] rounded-t-[80px] -z-10 blur-3xl opacity-10" />
+                </div>
+
+                <p className="text-gray-600 leading-relaxed max-w-lg font-light">
+                  We distinguish ourselves through a communicative competence methodology that prioritizes practical speaking.
+                </p>
+              </div>
+
+              {/* 2x2 Grid */}
+              <div className="grid grid-cols-2 gap-4 sm:gap-8">
+                {whyChooseFeatures.map((f, i) => (
+                  <div key={i} className="flex flex-col gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-[#1D2A39] shadow-sm">
+                      <f.icon size={24} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#1D2A39] mb-1">{f.title}</h4>
+                      <p className="text-[10px] text-gray-600 leading-relaxed uppercase tracking-wider font-bold opacity-80">{f.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Founder/Contact Mini Info */}
+              <div className="pt-8 border-t border-black/5 flex items-center gap-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md">
+                    <img src="https://i.pravatar.cc/100?img=68" alt="Founder" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold text-[#1D2A39] uppercase tracking-widest">Contact Now</p>
+                    <p className="text-sm font-bold text-[#1D2A39] opacity-80">+91 98XXX XXX89</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right: Vertical Arch Image Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="relative hidden lg:flex justify-center lg:justify-end"
+            >
+              <div className="w-[85%] lg:w-[60%] aspect-[4/5] rounded-t-[100px] overflow-hidden shadow-2xl relative z-10 border-8 border-white">
+                <img 
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop" 
+                  alt="Student Success" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-[#1D2A39]/10" />
+              </div>
+              {/* Back Drop Decorative Blob/Arch */}
+              <div className="absolute top-0 right-0 w-[60%] h-full bg-[#1D2A39] rounded-t-[100px] -z-10 blur-3xl opacity-10" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 4: Our Story */}
+      <section className="py-20 lg:py-32 bg-[#E0F7F9] relative overflow-hidden">
+        <div className="container mx-auto px-6 md:px-8 lg:px-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative aspect-[4/3] rounded-[40px] overflow-hidden shadow-2xl group border-4 border-white/50"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1000&auto=format&fit=crop"
+                alt="Sai Founders"
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1D2A39]/20 to-transparent" />
+            </motion.div>
+
+            {/* Right: Content & Cards */}
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-white rounded-full border border-black/5 shadow-sm">
+                  <span className="text-[#1D2A39] text-[10px] font-bold uppercase tracking-widest">Our Journey</span>
+                </div>
+                <h2 className="text-4xl lg:text-5xl font-display text-[#1D2A39] font-medium">
+                  Our <span className="text-[#1D2A39] opacity-80">Story</span>
+                </h2>
+                <p className="text-gray-600 leading-relaxed font-light italic">
+                  Since 2012, we've developed a unique practical-speaking methodology built on institutional trust.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="bg-white p-8 rounded-[30px] border border-white/50 space-y-4 shadow-sm hover:shadow-xl transition-all"
+                >
+                  <div className="w-12 h-12 bg-[#E0F7F9] rounded-2xl shadow-inner flex items-center justify-center text-[#1D2A39]">
+                    <Target size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#1D2A39]">Our Mission</h3>
+                  <p className="text-[10px] text-gray-600 font-bold uppercase tracking-widest leading-relaxed">
+                    To empower every individual to speak their mind with absolute confidence.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  whileHover={{ y: -5 }}
+                  className="bg-white p-8 rounded-[30px] border border-white/50 space-y-4 shadow-sm hover:shadow-xl transition-all"
+                >
+                  <div className="w-12 h-12 bg-[#E0F7F9] rounded-2xl shadow-inner flex items-center justify-center text-[#1D2A39]">
+                    <Rocket size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#1D2A39]">Our Values</h3>
+                  <p className="text-[10px] text-gray-600 font-bold uppercase tracking-widest leading-relaxed">
+                    Student-first approach, quality education, and accessibility built over a decade.
+                  </p>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 5: Faculty Slider */}
+      <section className="py-20 bg-[#E0F7F9] relative overflow-hidden">
+        <div className="container mx-auto px-6 md:px-8 lg:px-12 relative z-10">
+          <div className="text-center max-w-2xl mx-auto mb-16 space-y-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white rounded-full border border-black/5 shadow-sm">
+              <span className="text-[#1D2A39] text-[10px] font-bold uppercase tracking-widest">Our Team</span>
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-display text-[#1D2A39] font-medium leading-tight">
+              Meet Our <span className="text-[#1D2A39] opacity-80 italic text-4xl lg:text-5xl">Expert Team</span>
+            </h2>
+          </div>
+
+          <div className="relative group/slider">
+            <div
+              ref={scrollRef}
+              className="flex gap-4 overflow-x-auto pb-8 pt-2 scroll-smooth no-scrollbar snap-x snap-mandatory"
+              style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
+            >
+              {faculty.map((member, idx) => (
+                <div key={idx} className="min-w-[220px] sm:min-w-[250px] lg:min-w-[18.8%] snap-center drop-shadow-sm">
+                  <div className="group relative rounded-[36px] bg-white border border-white/50 shadow-[0_18px_50px_-30px_rgba(6,20,35,0.15)] overflow-hidden transition-transform duration-500 hover:-translate-y-2">
+                    {/* Main image */}
+                    <div className="relative aspect-[4/5]">
+                      <img
+                        src={member.img}
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                        alt={member.name}
+                        loading="lazy"
+                      />
+
+                      {/* Bottom fade for text readability */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#1D2A39]/90" />
+
+                      {/* Text strip on image */}
+                      <div className="absolute inset-x-0 bottom-0 p-5">
+                        <h3 className="text-[16px] font-extrabold text-white leading-tight drop-shadow-sm line-clamp-1">
+                          {member.name}
+                        </h3>
+                        <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#00B4D8] mt-1 line-clamp-1">
+                          {member.role}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Subtle top arc */}
+                    <div className="pointer-events-none absolute -top-24 -right-24 w-56 h-56 rounded-full bg-[#1D2A39]/[0.06] blur-2xl" />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Navigation */}
+            <div className="flex items-center justify-center gap-4 mt-6">
+              <button
+                onClick={() => scroll('left')}
+                className="w-12 h-12 rounded-full border border-[#1D2A39]/20 flex items-center justify-center text-[#1D2A39] bg-white hover:bg-[#1D2A39] hover:text-white transition-all shadow-md"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <div className="h-1 w-16 bg-white rounded-full overflow-hidden border border-black/5">
+                <div className="h-full w-1/3 bg-[#1D2A39] rounded-full" />
+              </div>
+              <button
+                onClick={() => scroll('right')}
+                className="w-12 h-12 rounded-full border border-[#1D2A39]/20 flex items-center justify-center text-[#1D2A39] bg-white hover:bg-[#1D2A39] hover:text-white transition-all shadow-md"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  )
+}
