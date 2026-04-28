@@ -828,9 +828,9 @@ export default function Home() {
                 className="absolute bottom-0 left-[35%] w-[45%] h-[55%] rounded-b-[80px] rounded-t-2xl overflow-hidden shadow-xl border-4 border-white z-20"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?q=80&w=600&auto=format&fit=crop"
-                  alt="Achievement Story"
-                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                  src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=600&auto=format&fit=crop"
+                  alt="Success Story"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-110"
                 />
               </motion.div>
 
