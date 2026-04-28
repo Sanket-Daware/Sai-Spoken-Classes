@@ -103,7 +103,7 @@ export default function Courses({ onOpenJoinModal }) {
   const [selectedCourse, setSelectedCourse] = useState(null);
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen pt-16 lg:pt-0">
       {courseSections.map((section, idx) => (
         <CourseGroup 
           key={idx} 
@@ -137,7 +137,7 @@ function CourseGroup({ section, onOpenJoinModal, onViewDetails }) {
   return (
     <div className="space-y-0">
       {/* Immersive Banner Section - Reduced Size */}
-      <section className="relative h-[350px] lg:h-[420px] overflow-hidden group">
+      <section className="relative h-[280px] lg:h-[420px] overflow-hidden group">
         <img 
           src={section.banner.image} 
           alt={section.banner.title}
@@ -167,7 +167,7 @@ function CourseGroup({ section, onOpenJoinModal, onViewDetails }) {
       </section>
 
       {/* Horizontal Slider Section - Reduced Card Sizes */}
-      <section className="py-16 bg-white container mx-auto px-6 lg:px-12">
+      <section className="py-10 md:py-16 bg-white container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between mb-8">
           <div className="space-y-1">
             <h2 className="text-2xl md:text-3xl font-display font-medium text-slate-900">{section.category}</h2>
@@ -197,9 +197,9 @@ function CourseGroup({ section, onOpenJoinModal, onViewDetails }) {
           {section.courses.map((course) => (
             <div 
               key={course.id} 
-              className="flex-shrink-0 w-[calc(100vw-48px)] md:w-[240px] lg:w-[calc((100%-64px)/5)] group snap-start"
+              className="flex-shrink-0 w-[165px] md:w-[240px] lg:w-[calc((100%-64px)/5)] group snap-start"
             >
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <div 
                   onClick={() => onViewDetails(course)}
                   className="relative aspect-[4/5] overflow-hidden rounded-sm shadow-md cursor-pointer"
@@ -210,29 +210,29 @@ function CourseGroup({ section, onOpenJoinModal, onViewDetails }) {
                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <div className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-[10px] uppercase font-bold tracking-widest border border-white/30">
+                    <div className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-white text-[8px] uppercase font-bold tracking-widest border border-white/30">
                       View Details
                     </div>
                   </div>
                 </div>
                 
-                <div className="space-y-2">
+                <div className="space-y-1.5">
                   <h3 
                     onClick={() => onViewDetails(course)}
-                    className="text-lg md:text-xl font-display font-medium text-slate-900 leading-tight group-hover:text-[#803FF6] transition-colors line-clamp-1 cursor-pointer"
+                    className="text-[14px] md:text-xl font-display font-medium text-slate-900 leading-tight group-hover:text-[#803FF6] transition-colors line-clamp-1 cursor-pointer"
                   >
                     {course.name}
                   </h3>
-                  <p className="text-xs text-slate-500 font-light leading-relaxed line-clamp-2 italic">
+                  <p className="text-[10px] md:text-xs text-slate-500 font-light leading-relaxed line-clamp-2 italic">
                     {course.desc}
                   </p>
-                  <div className="flex items-center gap-3 pt-1">
-                    <div className="flex items-center gap-1 text-[10px] text-slate-400 font-medium">
-                      <Clock size={12} /> {course.duration}
+                  <div className="flex items-center gap-2 pt-0.5">
+                    <div className="flex items-center gap-1 text-[9px] text-slate-400 font-medium">
+                      <Clock size={10} /> {course.duration}
                     </div>
                   </div>
-                  <button onClick={onOpenJoinModal} className="pt-2 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-900 group-hover:gap-3 transition-all">
-                    Enroll <ArrowRight size={12} />
+                  <button onClick={onOpenJoinModal} className="pt-1 flex items-center gap-2 text-[9px] font-bold uppercase tracking-widest text-slate-900 group-hover:gap-3 transition-all">
+                    Enroll <ArrowRight size={10} />
                   </button>
                 </div>
               </div>

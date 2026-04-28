@@ -122,18 +122,18 @@ export default function Footer() {
             
             <div className="space-y-6">
               {/* Highlighted WhatsApp/Call Block */}
-              <div className="bg-white p-5 rounded-2xl shadow-xl shadow-brand-primary/5 border border-brand-primary/10 relative group hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand-primary/10 transition-all duration-500">
-                <div className="absolute top-4 right-4 flex items-center gap-2">
-                  <span className="text-[9px] uppercase tracking-wider font-bold text-green-600">Admissions Open</span>
-                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <div className="bg-white p-3.5 md:p-5 rounded-2xl shadow-xl shadow-brand-primary/5 border border-brand-primary/10 relative group hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand-primary/10 transition-all duration-500">
+                <div className="absolute top-2.5 md:top-4 right-3.5 md:right-4 flex items-center gap-1.5 md:gap-2">
+                  <span className="text-[8px] md:text-[9px] uppercase tracking-wider font-bold text-green-600">Admissions Open</span>
+                  <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-500 animate-pulse" />
                 </div>
-                <div className="flex items-center gap-4 mt-3">
-                  <div className="w-12 h-12 bg-gradient-to-tr from-green-500 to-green-400 rounded-xl flex items-center justify-center text-white shadow-lg shadow-green-200 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300">
-                    <Phone size={22} fill="white" />
+                <div className="flex items-center gap-3 md:gap-4 mt-2 md:mt-3">
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-tr from-green-500 to-green-400 rounded-xl flex items-center justify-center text-white shadow-lg shadow-green-200 group-hover:rotate-12 group-hover:scale-110 transition-transform duration-300">
+                    <Phone size={18} md:size={22} fill="white" />
                   </div>
                   <div>
-                    <p className="text-[11px] font-bold text-brand-text/40 uppercase tracking-widest mb-0.5">Call / WhatsApp</p>
-                    <p className="text-[17px] font-extrabold text-brand-text tracking-tight">+91 98XXX XXX89</p>
+                    <p className="text-[9px] md:text-[11px] font-bold text-brand-text/40 uppercase tracking-widest mb-0">Call / WhatsApp</p>
+                    <p className="text-[15px] md:text-[17px] font-extrabold text-brand-text tracking-tight">+91 98XXX XXX89</p>
                   </div>
                 </div>
               </div>
@@ -154,16 +154,16 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar: Copyright & Legal */}
-        <div className="mt-12 mb-6 pt-8 px-0 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
-          <div className="flex items-center gap-2.5">
-            <div className="w-6 h-6 bg-brand-primary/10 rounded-md flex items-center justify-center text-brand-primary">
-              <BookOpen size={12} />
+        <div className="mt-8 md:mt-12 mb-4 md:mb-6 pt-6 md:pt-8 px-0 flex flex-row flex-wrap justify-center md:justify-between items-center gap-x-4 md:gap-x-10 gap-y-3 relative z-10 text-center">
+          <div className="flex items-center gap-2">
+            <div className="w-5 h-5 bg-brand-primary/10 rounded-md flex items-center justify-center text-brand-primary">
+              <BookOpen size={10} />
             </div>
-            <p className="text-[11px] font-bold text-brand-text/40 uppercase tracking-widest">
-              © {currentYear} Sai Spoken.
+            <p className="text-[9px] md:text-[11px] font-bold text-brand-text/40 uppercase tracking-widest whitespace-nowrap">
+              © {currentYear} Sai Spoken. | Designed by ClickInnovate Pvt.Ltd
             </p>
           </div>
-          <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-[10px] font-bold uppercase tracking-[0.15em] text-brand-text/40">
+          <div className="flex items-center gap-4 md:gap-10 text-[8px] md:text-[10px] font-bold uppercase tracking-[0.1em] md:tracking-[0.15em] text-brand-text/40">
             <Link to="#" className="hover:text-brand-primary transition-colors">Privacy Protocols</Link>
             <Link to="#" className="hover:text-brand-primary transition-colors">Safety Terms</Link>
             <Link to="#" className="hover:text-brand-primary transition-colors">Digital Sitemap</Link>
