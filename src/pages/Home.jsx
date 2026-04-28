@@ -1015,25 +1015,25 @@ export default function Home() {
       </section>
 
       {/* Key Features Section - Modern Bento Grid */}
-      <section className="py-12 lg:py-16 relative overflow-hidden">
+      <section className="py-12 lg:py-12 relative overflow-hidden bg-white/30">
         <FloatingGrammarBg count={12} />
 
         {/* Decorative background blurs */}
         <div className="absolute top-1/4 left-0 w-80 h-80 bg-brand-primary/5 rounded-full blur-[80px] -translate-x-1/2" />
         <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-[#70C7C6]/5 rounded-full blur-[100px] translate-x-1/2" />
 
-        <div className="container mx-auto px-4 mb-10">
+        <div className="container mx-auto px-4 mb-8 lg:mb-10">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="space-y-3 max-w-2xl text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-primary/5 rounded-full border border-brand-primary/10">
                 <span className="text-[9px] font-bold text-brand-primary uppercase tracking-[0.2em]">The SAI Advantage</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-display text-brand-text font-bold tracking-tight leading-[1.1]">
+              <h2 className="text-3xl md:text-3xl lg:text-4xl font-display text-brand-text font-bold tracking-tight leading-[1.1]">
                 Powerful Features Dedicated <br />
                 <span className="text-brand-primary italic">To Your Success</span>
               </h2>
             </div>
-            <Link to="/contact" className="lg:flex hidden items-center gap-3 bg-brand-text text-white py-2.5 px-7 lg:py-3.5 lg:px-7 rounded-xl font-bold text-[10px] lg:text-xs shadow-xl hover:bg-brand-primary transition-all group">
+            <Link to="/contact" className="lg:flex hidden items-center gap-3 bg-brand-text text-white py-2.5 px-7 lg:py-3 lg:px-7 rounded-xl font-bold text-[10px] lg:text-xs shadow-xl hover:bg-brand-primary transition-all group">
               Book Free Demo
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -1041,38 +1041,38 @@ export default function Home() {
         </div>
 
         <div className="container mx-auto px-4 max-w-6xl">
-          <div className="grid grid-cols-2 lg:grid-cols-12 gap-3 md:gap-5 auto-rows-[minmax(110px,_auto)]">
+          <div className="grid grid-cols-2 lg:grid-cols-12 gap-3 md:gap-4 lg:gap-5 auto-rows-[minmax(100px,_auto)]">
 
             {/* Bento Card 1: Trained Faculty (Large Featured) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="col-span-2 lg:col-span-7 lg:row-span-2 bg-[#F1E9A3]/90 backdrop-blur-md rounded-[28px] lg:rounded-[32px] p-5 lg:p-8 flex flex-col justify-between border border-white/50 shadow-xl shadow-gray-200/40 group relative overflow-hidden"
+              className="col-span-2 lg:col-span-7 lg:row-span-2 bg-[#F1E9A3]/90 backdrop-blur-md rounded-[28px] lg:rounded-[32px] p-5 lg:p-6 flex flex-col justify-between border border-white/50 shadow-xl shadow-gray-200/40 group relative overflow-hidden"
             >
-              <div className="space-y-3 lg:space-y-4 relative z-10">
-                <div className="w-10 h-10 lg:w-14 lg:h-14 bg-brand-surface rounded-xl lg:rounded-2xl flex items-center justify-center text-brand-primary shadow-md ring-4 ring-[#FEFAE0]">
-                  <GraduationCap size={22} className="lg:size-[28px]" />
+              <div className="space-y-2 lg:space-y-3 relative z-10">
+                <div className="w-10 h-10 lg:w-12 lg:h-12 bg-brand-surface rounded-xl flex items-center justify-center text-brand-primary shadow-md ring-4 ring-[#FEFAE0]">
+                  <GraduationCap size={22} className="lg:size-[24px]" />
                 </div>
-                <h3 className="text-xl lg:text-2xl font-bold text-brand-text leading-tight font-display">Trained Faculty</h3>
-                <p className="text-[11px] lg:text-[13px] text-brand-text-muted leading-relaxed max-w-md font-light">
+                <h3 className="text-xl lg:text-xl font-bold text-brand-text leading-tight font-display">Trained Faculty</h3>
+                <p className="text-[11px] lg:text-[12px] text-brand-text-muted leading-relaxed max-w-sm font-light">
                   Expert grammar coaches and spoken trainers guide you through every nuance with personalized methodologies.
                 </p>
               </div>
-              <div className="pt-4 lg:pt-6 relative z-10">
-                <div className="flex -space-x-2.5 mb-2 lg:mb-3">
+              <div className="pt-4 lg:pt-4 relative z-10">
+                <div className="flex -space-x-2.5 mb-2 lg:mb-2">
                   {[1, 2, 3, 4].map(i => (
-                    <div key={i} className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border-2 border-white overflow-hidden bg-gray-100">
+                    <div key={i} className="w-7 h-7 lg:w-7.5 lg:h-7.5 rounded-full border-2 border-white overflow-hidden bg-gray-100">
                       <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="" />
                     </div>
                   ))}
-                  <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border-2 border-white bg-brand-primary flex items-center justify-center text-white text-[8px] lg:text-[9px] font-bold">
+                  <div className="w-7 h-7 lg:w-7.5 lg:h-7.5 rounded-full border-2 border-white bg-brand-primary flex items-center justify-center text-white text-[8px] lg:text-[9px] font-bold">
                     +15
                   </div>
                 </div>
                 <p className="text-[8px] lg:text-[9px] uppercase tracking-widest font-bold text-brand-primary">10+ Years Excellence</p>
               </div>
-              <div className="absolute -bottom-16 -right-16 w-48 lg:w-56 h-48 lg:h-56 bg-white/30 rounded-full blur-3xl group-hover:bg-white/50 transition-colors" />
+              <div className="absolute -bottom-16 -right-16 w-48 lg:w-48 h-48 lg:h-48 bg-white/30 rounded-full blur-3xl group-hover:bg-white/50 transition-colors" />
             </motion.div>
 
             {/* Bento Card 2: Live Classes (Tall Featured) */}
@@ -1081,19 +1081,19 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="col-span-2 lg:col-span-5 lg:row-span-3 bg-[#C5E2CD]/90 backdrop-blur-md rounded-[28px] lg:rounded-[32px] p-5 lg:p-8 flex flex-col border border-white/50 shadow-xl shadow-gray-200/40 group relative overflow-hidden"
+              className="col-span-2 lg:col-span-5 lg:row-span-3 bg-[#C5E2CD]/90 backdrop-blur-md rounded-[28px] lg:rounded-[32px] p-5 lg:p-6 flex flex-col border border-white/50 shadow-xl shadow-gray-200/40 group relative overflow-hidden"
             >
-              <div className="w-10 h-10 lg:w-14 lg:h-14 bg-brand-surface rounded-xl lg:rounded-2xl flex items-center justify-center text-green-600 shadow-md ring-4 ring-[#EAF6ED] mb-4 lg:mb-6">
-                <PlayCircle size={22} className="lg:size-[28px]" />
+              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-brand-surface rounded-xl flex items-center justify-center text-green-600 shadow-md ring-4 ring-[#EAF6ED] mb-4 lg:mb-4">
+                <PlayCircle size={22} className="lg:size-[24px]" />
               </div>
-              <div className="space-y-3 lg:space-y-4 mb-6 lg:mb-8">
-                <h3 className="text-xl lg:text-2xl font-bold text-brand-text leading-tight font-display">Live Interactive <br className="hidden lg:block" />Classes</h3>
-                <p className="text-[11px] lg:text-[13px] text-brand-text-muted leading-relaxed italic font-light">
+              <div className="space-y-3 lg:space-y-3 mb-6 lg:mb-6">
+                <h3 className="text-xl lg:text-xl font-bold text-brand-text leading-tight font-display">Live Interactive <br className="hidden lg:block" />Classes</h3>
+                <p className="text-[11px] lg:text-[12px] text-brand-text-muted leading-relaxed italic font-light">
                   "Interaction with trainers and instant feedback for rapid progress."
                 </p>
               </div>
 
-              <div className="mt-auto space-y-3">
+              <div className="mt-auto space-y-2 lg:mb-2">
                 <div className="h-1 bg-white/50 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
@@ -1116,16 +1116,16 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="col-span-1 lg:col-span-4 lg:row-span-2 bg-[#C7DBE0]/90 backdrop-blur-md rounded-[28px] lg:rounded-[32px] p-4 lg:p-6 border border-white/50 shadow-lg shadow-gray-200/40 flex flex-col justify-center relative overflow-hidden group"
+              className="col-span-1 lg:col-span-4 lg:row-span-2 bg-[#C7DBE0]/90 backdrop-blur-md rounded-[28px] lg:rounded-[32px] p-4 lg:p-5 border border-white/50 shadow-lg shadow-gray-200/40 flex flex-col justify-center relative overflow-hidden group"
             >
-              <div className="flex items-start justify-between mb-2 lg:mb-4">
-                <div className="w-8 h-8 lg:w-11 lg:h-11 bg-brand-surface rounded-lg lg:rounded-2xl flex items-center justify-center text-blue-500 shadow-sm">
-                  <BookOpen size={16} className="lg:size-[20px]" />
+              <div className="flex items-start justify-between mb-2 lg:mb-3">
+                <div className="w-8 h-8 lg:w-10 lg:h-10 bg-brand-surface rounded-lg lg:rounded-xl flex items-center justify-center text-blue-500 shadow-sm">
+                  <BookOpen size={16} className="lg:size-[18px]" />
                 </div>
                 <div className="px-1.5 py-0.5 bg-white/50 rounded-full text-[7px] lg:text-[8px] font-bold text-blue-700 uppercase tracking-wider">Weekly</div>
               </div>
               <h4 className="text-[15px] lg:text-lg font-bold text-brand-text mb-1 font-display">Revision Support</h4>
-              <p className="text-[10px] lg:text-[12px] text-brand-text-muted leading-tight lg:leading-relaxed line-clamp-2 font-light italic">
+              <p className="text-[10px] lg:text-[11px] text-brand-text-muted leading-tight lg:leading-snug line-clamp-2 font-light italic">
                 Portal-based revision sessions and premium materials.
               </p>
             </motion.div>
@@ -1136,14 +1136,14 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="col-span-1 lg:col-span-3 lg:row-span-2 bg-[#FBD1B5]/90 backdrop-blur-md rounded-[28px] lg:rounded-[32px] p-4 lg:p-6 border border-white/50 shadow-lg shadow-gray-200/40 flex flex-col items-center text-center justify-center space-y-2 lg:space-y-3 group"
+              className="col-span-1 lg:col-span-3 lg:row-span-2 bg-[#FBD1B5]/90 backdrop-blur-md rounded-[28px] lg:rounded-[32px] p-4 lg:p-5 border border-white/50 shadow-lg shadow-gray-200/40 flex flex-col items-center text-center justify-center space-y-2 lg:space-y-3 group"
             >
-              <div className="w-10 h-10 lg:w-14 lg:h-14 bg-brand-surface rounded-full flex items-center justify-center text-orange-500 shadow-md group-hover:scale-110 transition-transform duration-500">
-                <Award size={22} className="lg:size-[28px]" />
+              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-brand-surface rounded-full flex items-center justify-center text-orange-500 shadow-md group-hover:scale-110 transition-transform duration-500">
+                <Award size={22} className="lg:size-[24px]" />
               </div>
               <div>
-                <h4 className="text-[15px] lg:text-[17px] font-bold text-brand-text font-display leading-tight">Certification</h4>
-                <p className="text-[9px] lg:text-[11px] text-brand-text-muted leading-tight mt-1 lg:mt-1.5 font-light">Global recognized certificates.</p>
+                <h4 className="text-[15px] lg:text-[16px] font-bold text-brand-text font-display leading-tight">Certification</h4>
+                <p className="text-[9px] lg:text-[10px] text-brand-text-muted leading-tight mt-1 lg:mt-1 font-light">Global recognized certificates.</p>
               </div>
             </motion.div>
 
@@ -1153,14 +1153,14 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="col-span-1 lg:col-span-4 lg:row-span-1 bg-[#DFCDE2]/90 backdrop-blur-md rounded-[20px] lg:rounded-[24px] px-4 lg:px-6 py-3 lg:py-4 border border-white/50 shadow-lg shadow-gray-200/40 flex items-center gap-3 lg:gap-4 group"
+              className="col-span-1 lg:col-span-4 lg:row-span-1 bg-[#DFCDE2]/90 backdrop-blur-md rounded-[20px] lg:rounded-[24px] px-4 lg:px-5 py-3 lg:py-3 border border-white/50 shadow-lg shadow-gray-200/40 flex items-center gap-3 lg:gap-3 group"
             >
-              <div className="w-8 h-8 lg:w-10 lg:h-10 shrink-0 bg-brand-surface rounded-lg lg:rounded-xl flex items-center justify-center text-purple-600 shadow-sm">
-                <Store size={16} className="lg:size-[20px]" />
+              <div className="w-8 h-8 lg:w-9 lg:h-9 shrink-0 bg-brand-surface rounded-lg flex items-center justify-center text-purple-600 shadow-sm">
+                <Store size={16} className="lg:size-[18px]" />
               </div>
               <div>
-                <h4 className="text-[13px] lg:text-sm font-bold text-brand-text font-display">Franchise</h4>
-                <p className="text-[9px] lg:text-[10px] text-brand-text-muted line-clamp-1 font-light">Join our growing network.</p>
+                <h4 className="text-[13px] lg:text-[13px] font-bold text-brand-text font-display">Franchise</h4>
+                <p className="text-[9px] lg:text-[9px] text-brand-text-muted line-clamp-1 font-light">Join our growing network.</p>
               </div>
             </motion.div>
 
@@ -1170,14 +1170,14 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 }}
-              className="col-span-1 lg:col-span-4 lg:row-span-1 bg-[#F1E4A3]/90 backdrop-blur-md rounded-[20px] lg:rounded-[24px] px-4 lg:px-6 py-3 lg:py-4 border border-white/50 shadow-lg shadow-gray-200/40 flex items-center gap-3 lg:gap-4 group"
+              className="col-span-1 lg:col-span-4 lg:row-span-1 bg-[#F1E4A3]/90 backdrop-blur-md rounded-[20px] lg:rounded-[24px] px-4 lg:px-5 py-3 lg:py-3 border border-white/50 shadow-lg shadow-gray-200/40 flex items-center gap-3 lg:gap-3 group"
             >
-              <div className="w-8 h-8 lg:w-10 lg:h-10 shrink-0 bg-brand-surface rounded-lg lg:rounded-xl flex items-center justify-center text-yellow-600 shadow-sm">
-                <Users size={16} className="lg:size-[20px]" />
+              <div className="w-8 h-8 lg:w-9 lg:h-9 shrink-0 bg-brand-surface rounded-lg flex items-center justify-center text-yellow-600 shadow-sm">
+                <Users size={16} className="lg:size-[18px]" />
               </div>
               <div>
-                <h4 className="text-[13px] lg:text-sm font-bold text-brand-text font-display">Batches</h4>
-                <p className="text-[9px] lg:text-[10px] text-brand-text-muted line-clamp-1 font-light">Homemakers & Students.</p>
+                <h4 className="text-[13px] lg:text-[13px] font-bold text-brand-text font-display">Batches</h4>
+                <p className="text-[9px] lg:text-[9px] text-brand-text-muted line-clamp-1 font-light">Homemakers & Students.</p>
               </div>
             </motion.div>
 
