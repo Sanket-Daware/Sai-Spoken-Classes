@@ -124,16 +124,16 @@ export default function Franchise() {
               </div>
 
               {/* Interactive Buttons matching Reference UI */}
-              <div className="flex flex-wrap items-center gap-4 pt-2">
-                <a href="#apply" className="inline-flex items-center justify-center gap-3 h-14 px-8 bg-gradient-to-r from-[#1796DF] to-[#712DE3] text-white rounded-md font-bold transition-all group shadow-xl hover:shadow-cyan-500/20 hover:scale-105">
+              <div className="flex flex-row items-center gap-2 sm:gap-4 pt-2">
+                <a href="#apply" className="flex-1 inline-flex items-center justify-center gap-2 sm:gap-3 h-12 sm:h-14 px-3 sm:px-8 bg-gradient-to-r from-[#1796DF] to-[#712DE3] text-white rounded-md font-bold transition-all group shadow-xl hover:shadow-cyan-500/20 hover:scale-105 text-[10px] sm:text-sm">
                   Register Now
-                  <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/10 flex items-center justify-center">
+                    <ArrowRight size={14} className="sm:size-[18px] group-hover:translate-x-1 transition-transform" />
                   </div>
                 </a>
 
-                <a href="tel:9588462010" className="inline-flex items-center gap-3 h-14 px-8 bg-transparent backdrop-blur-sm rounded-md border border-[#3A4B6B] hover:bg-white/5 transition-all text-white font-semibold text-sm tracking-widest shadow-lg">
-                  <Phone size={18} className="text-[#1796DF]" />
+                <a href="tel:9588462010" className="flex-1 inline-flex items-center justify-center gap-2 sm:gap-3 h-12 sm:h-14 px-3 sm:px-8 bg-transparent backdrop-blur-sm rounded-md border border-[#3A4B6B] hover:bg-white/5 transition-all text-white font-semibold text-[10px] sm:text-sm tracking-tighter sm:tracking-widest shadow-lg">
+                  <Phone size={14} className="text-[#1796DF] sm:size-[18px]" />
                   9588462010
                 </a>
               </div>
@@ -196,98 +196,74 @@ export default function Franchise() {
 
 
 
-      {/* Onboarding Journey - Light Teal Slim Layout */}
-      <section className="py-6 lg:py-10 bg-[#E0F7F9] relative overflow-hidden flex flex-col justify-center">
-        {/* Background Decorative elements - Subtle */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#803FF6]/5 rounded-full blur-[120px] -z-0 opacity-20 translate-x-1/4 -translate-y-1/2" />
+      {/* Onboarding Journey - High Visibility Redesign */}
+      <section className="py-20 lg:py-32 bg-[#E0F7F9] relative overflow-hidden">
+        {/* Enhanced Watermark - Responsive Size */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[4rem] sm:text-[8rem] lg:text-[15rem] font-bold text-[#1796DF] opacity-[0.06] select-none pointer-events-none uppercase tracking-tighter">
+          Journey
+        </div>
 
-        <div className="container mx-auto px-6 relative z-10 flex flex-col items-center">
-          {/* Header: Compact & Dark Text */}
-          <div className="text-center mb-6 lg:mb-8 space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#006064]/5 rounded-full border border-[#006064]/10">
-              <span className="text-[#006064]/60 text-[8px] font-bold uppercase tracking-widest">PARTNERSHIP PROCESS</span>
+        <div className="container mx-auto px-6 relative z-10">
+          {/* Header */}
+          <div className="max-w-3xl mx-auto text-center mb-24 space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1796DF]/15 rounded-full border border-[#1796DF]/30">
+              <span className="text-[#1796DF] text-[10px] font-bold uppercase tracking-widest">Expansion Blueprint</span>
             </div>
-            <h2 className="text-xl lg:text-3xl font-display text-[#004D40] font-medium leading-tight">
-              The <span className="text-[#803FF6] italic">Onboarding</span> Journey
+            <h2 className="text-4xl lg:text-5xl font-display text-[#0F223D] font-medium leading-tight">
+              The <span className="text-[#1796DF] italic">Onboarding</span> Path
             </h2>
-            <p className="text-[#006064]/70 font-normal text-xs lg:text-sm leading-relaxed italic max-w-lg mx-auto">
-              Explore the step-by-step evolution in a compact, seamless flow.
+            <p className="text-[#0F223D]/70 text-sm lg:text-base max-w-xl mx-auto font-light">
+              A meticulously designed five-step transition to becoming a core part of the Sai Success education network.
             </p>
           </div>
 
-          {/* The Journey Area - Light Theme */}
-          <div className="w-full relative min-h-[500px] lg:min-h-[320px]">
-            {/* Desktop Path (Horizontal) */}
-            <svg className="hidden lg:block absolute top-[20%] left-0 w-full h-[60%] pointer-events-none z-0" viewBox="0 0 1200 300" fill="none" preserveAspectRatio="none">
-              <motion.path
-                d="M100,50 C250,50 350,250 400,250 S550,50 600,50 S750,250 800,250 S1000,50 1100,80"
-                stroke="url(#desktopPathGradient)"
-                strokeWidth="1.5"
-                strokeDasharray="6 6"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.2 }}
-                viewport={{ once: true }}
-                transition={{ duration: 3 }}
-              />
-              <defs>
-                <linearGradient id="desktopPathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#006064" />
-                  <stop offset="50%" stopColor="#803FF6" />
-                  <stop offset="100%" stopColor="#006064" />
-                </linearGradient>
-              </defs>
-            </svg>
+          {/* The Journey Path */}
+          <div className="relative">
+            {/* Connection Line (Desktop) - Increased Opacity & Thickness */}
+            <div className="hidden lg:block absolute top-[120px] left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#1796DF]/50 to-transparent shadow-[0_0_15px_rgba(23,150,223,0.3)]" />
+            
+            {/* Connection Line (Mobile) - Vertical Line */}
+            <div className="lg:hidden absolute left-[31px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-[#1796DF]/30 to-transparent" />
 
-            {/* Mobile Path (Vertical) */}
-            <svg className="block lg:hidden absolute top-[50px] left-1/2 -translate-x-1/2 w-[100px] h-[calc(100%-100px)] pointer-events-none z-0" viewBox="0 0 100 800" fill="none" preserveAspectRatio="none">
-              <motion.path
-                d="M50,0 C80,100 20,200 50,300 S80,500 50,600 S20,700 50,800"
-                stroke="url(#mobilePathGradient)"
-                strokeWidth="2"
-                strokeDasharray="4 4"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.15 }}
-                viewport={{ once: true }}
-                transition={{ duration: 3 }}
-              />
-              <defs>
-                <linearGradient id="mobilePathGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#006064" />
-                  <stop offset="50%" stopColor="#803FF6" />
-                  <stop offset="100%" stopColor="#006064" />
-                </linearGradient>
-              </defs>
-            </svg>
-
-            {/* Steps Container - Responsive Asymmetric Grid */}
-            <div className="flex flex-col gap-16 lg:grid lg:grid-cols-5 lg:gap-4 relative z-10 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-4">
               {steps.map((step, idx) => (
                 <motion.div
                   key={idx}
-                  initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }}
+                  initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className={cn(
-                    "flex flex-col items-center w-full lg:w-auto",
-                    // Desktop zig-zag
-                    idx % 2 === 1 ? "lg:mt-[100px]" : "lg:mt-0",
-                    // Mobile zig-zag (alternating alignment)
-                    idx % 2 === 0 ? "items-start lg:items-center" : "items-end lg:items-center"
-                  )}
+                  className="relative group"
                 >
-                  <div className="w-[85%] lg:w-full max-w-[180px] group">
-                    <div className="relative p-0.5 bg-white/50 rounded-[12px] shadow-sm group-hover:shadow-md transition-all duration-700 overflow-hidden">
-                      <div className="bg-white/80 backdrop-blur-md rounded-[11px] p-4 space-y-1.5 border border-[#B2EBF2]/30">
-                        <div className="flex justify-between items-center mb-0.5">
-                          <span className="text-lg font-display font-medium text-[#004D40]/50 group-hover:text-[#004D40] transition-colors uppercase">{step.id}</span>
-                          <div className="w-4 h-4 rounded-full bg-[#006064]/5 flex items-center justify-center text-[#006064] opacity-30 group-hover:opacity-100 transition-all">
-                            <ChevronDown size={8} className={cn(idx === steps.length - 1 && "rotate-180")} />
-                          </div>
-                        </div>
-                        <h3 className="text-[13px] font-bold text-[#004D40] group-hover:text-[#803FF6] transition-colors leading-tight">{step.title}</h3>
-                        <p className="text-[#006064]/80 text-[11px] leading-relaxed font-normal italic">{step.desc}</p>
-                      </div>
+                  {/* Step Marker (Node) - Desktop */}
+                  <div className="hidden lg:flex absolute top-[108px] left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-white border-2 border-[#1796DF]/60 z-20 items-center justify-center group-hover:scale-125 group-hover:border-[#1796DF] transition-all duration-500 shadow-md">
+                    <div className="w-3 h-3 rounded-full bg-[#1796DF] opacity-40 group-hover:opacity-100 group-hover:animate-pulse" />
+                  </div>
+
+                  {/* Step Marker (Node) - Mobile */}
+                  <div className="lg:hidden absolute left-[24px] top-8 w-4 h-4 rounded-full bg-white border-2 border-[#1796DF] z-20 flex items-center justify-center">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#1796DF]" />
+                  </div>
+
+                  {/* Card Content */}
+                  <div className={cn(
+                    "relative flex flex-row items-center gap-6 pl-16 lg:pl-0 lg:flex-col lg:text-center lg:space-y-6",
+                    idx % 2 === 0 ? "lg:flex-col" : "lg:flex-col-reverse lg:space-y-reverse lg:mt-36"
+                  )}>
+                    {/* Icon Sphere */}
+                    <div className="w-16 h-16 lg:w-20 lg:h-20 shrink-0 rounded-[24px] lg:rounded-[32px] bg-white border-2 border-[#1796DF]/10 shadow-xl flex items-center justify-center text-[#1796DF] relative z-10 group-hover:-translate-y-1 lg:group-hover:-translate-y-3 transition-transform duration-500">
+                      <span className="text-2xl lg:text-3xl font-display font-bold opacity-30 group-hover:opacity-100 transition-opacity">{step.id}</span>
+                      
+                      {/* Floating Glow */}
+                      <div className="absolute inset-0 bg-[#1796DF]/5 rounded-[24px] lg:rounded-[32px] blur-xl group-hover:bg-[#1796DF]/15 transition-colors" />
+                    </div>
+
+                    {/* Text Block */}
+                    <div className="space-y-1 lg:space-y-2 lg:max-w-[200px]">
+                      <h3 className="text-lg lg:text-xl font-bold text-[#0F223D] group-hover:text-[#1796DF] transition-colors">{step.title}</h3>
+                      <p className="text-[#0F223D]/80 text-[11px] lg:text-xs leading-relaxed italic font-medium">
+                        {step.desc}
+                      </p>
                     </div>
                   </div>
                 </motion.div>

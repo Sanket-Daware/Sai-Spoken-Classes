@@ -188,7 +188,7 @@ export default function Faculty() {
 
       {/* Section 2: All Faculties Grid - RESPONSIVE 4-UP PILL ARCH */}
       <section className="pb-32 container mx-auto px-8 md:px-16 lg:px-24 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-6">
           {trainers.map((member, idx) => (
             <motion.div
               key={idx}
@@ -198,32 +198,32 @@ export default function Faculty() {
               transition={{ delay: (idx % 4) * 0.1 }}
               className="group relative h-full"
             >
-              <div className="relative h-full flex flex-col bg-white rounded-tr-[60px] rounded-br-[60px] rounded-bl-[60px] rounded-tl-none p-6 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(128,63,246,0.12)] border border-gray-100/60">
+              <div className="relative h-full flex flex-col bg-white rounded-tr-[40px] sm:rounded-tr-[60px] rounded-br-[40px] sm:rounded-br-[60px] rounded-bl-[40px] sm:rounded-bl-[60px] rounded-tl-none p-3.5 sm:p-6 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.05)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(128,63,246,0.12)] border border-gray-100/60">
 
                 {/* Top Decorative dots icon */}
-                <div className="mb-6 grid grid-cols-2 gap-1.5 w-3 ml-2 mt-2 opacity-60">
-                  <div className="w-[5px] h-[5px] bg-[#A8B2C1] rounded-full"></div>
-                  <div className="w-[5px] h-[5px] bg-[#803FF6] rounded-full"></div>
-                  <div className="w-[5px] h-[5px] bg-[#803FF6] rounded-full"></div>
-                  <div className="w-[5px] h-[5px] bg-[#A8B2C1] rounded-full"></div>
+                <div className="mb-3 sm:mb-6 grid grid-cols-2 gap-1 w-2.5 sm:w-3 ml-1 sm:ml-2 mt-1 sm:mt-2 opacity-60">
+                  <div className="w-[4px] sm:w-[5px] h-[4px] sm:h-[5px] bg-[#A8B2C1] rounded-full"></div>
+                  <div className="w-[4px] sm:w-[5px] h-[4px] sm:h-[5px] bg-[#803FF6] rounded-full"></div>
+                  <div className="w-[4px] sm:w-[5px] h-[4px] sm:h-[5px] bg-[#803FF6] rounded-full"></div>
+                  <div className="w-[4px] sm:w-[5px] h-[4px] sm:h-[5px] bg-[#A8B2C1] rounded-full"></div>
                 </div>
 
                 {/* Typography */}
-                <div className="px-1 mb-3 flex-grow flex flex-col">
-                  <h3 className="text-xl font-serif text-[#191c1e] leading-snug mb-1">
+                <div className="px-1 mb-2 sm:mb-3 flex-grow flex flex-col">
+                  <h3 className="text-sm sm:text-xl font-serif text-[#191c1e] leading-snug mb-0.5 sm:mb-1">
                     {member.name}
                   </h3>
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-[#803FF6]/70 mb-3">
+                  <p className="text-[8px] sm:text-[10px] font-bold uppercase tracking-widest text-[#803FF6]/70 mb-2 sm:mb-3">
                     {member.role}
                   </p>
-                  <p className="text-[12px] text-gray-500 mt-1 font-light leading-relaxed line-clamp-3 min-h-[50px]">
+                  <p className="text-[10px] sm:text-[12px] text-gray-500 mt-1 font-light leading-snug sm:leading-relaxed line-clamp-2 sm:line-clamp-3 min-h-[30px] sm:min-h-[50px]">
                     {member.bio}
                   </p>
                 </div>
 
                 {/* Circular Profile Image with Floating Arrow */}
-                <div className="relative mt-6 flex justify-center pb-1">
-                  <div className="relative w-32 h-32">
+                <div className="relative mt-4 sm:mt-6 flex justify-center pb-1">
+                  <div className="relative w-20 h-20 sm:w-32 sm:h-32">
                     <img
                       src={member.img}
                       className="w-full h-full object-cover rounded-full shadow-md transition-transform duration-700 group-hover:scale-[1.03] border-4 border-white"
@@ -231,8 +231,8 @@ export default function Faculty() {
                       loading="lazy"
                     />
                     {/* Floating Purple Arrow Button */}
-                    <div className="absolute top-0 right-0 w-9 h-9 bg-[#803FF6] rounded-full flex items-center justify-center text-white shadow-[0_6px_15px_-5px_rgba(128,63,246,0.6)] transition-all duration-300 group-hover:rotate-45 cursor-pointer z-10 hover:bg-[#6e35d1] group-hover:scale-110">
-                      <ArrowUpRight size={16} className="group-hover:-rotate-45 transition-transform" />
+                    <div className="absolute top-0 right-0 w-7 h-7 sm:w-9 sm:h-9 bg-[#803FF6] rounded-full flex items-center justify-center text-white shadow-[0_6px_15px_-5px_rgba(128,63,246,0.6)] transition-all duration-300 group-hover:rotate-45 cursor-pointer z-10 hover:bg-[#6e35d1] group-hover:scale-110">
+                      <ArrowUpRight size={14} className="sm:size-[16px] group-hover:-rotate-45 transition-transform" />
                     </div>
                   </div>
                 </div>

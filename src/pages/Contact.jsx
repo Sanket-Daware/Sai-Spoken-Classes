@@ -207,7 +207,7 @@ export default function Contact() {
       {/* Map Section */}
       <section className="container mx-auto px-4 mt-24">
          <div className="bg-brand-peach/20 rounded-[50px] overflow-hidden p-4 border border-brand-peach shadow-lg">
-            <div className="w-full h-[500px] rounded-[40px] overflow-hidden grayscale bg-zinc-200 flex items-center justify-center relative group">
+            <div className="w-full h-[500px] rounded-[40px] overflow-hidden md:grayscale bg-zinc-200 flex items-center justify-center relative group">
                {/* Note: In a real app, use Google Maps Iframe or React Google Maps component */}
                <div className="text-center space-y-4">
                   <MapPin size={80} className="text-brand-primary mx-auto animate-bounce" />
@@ -229,7 +229,7 @@ export default function Contact() {
       </section>
 
       {/* Batch Schedule Reference */}
-      <section className="container mx-auto px-4 py-24">
+      <section className="container mx-auto px-4 pt-12 pb-6 md:py-24">
          <div className="bg-white rounded-[50px] p-12 lg:p-20 shadow-xl border border-brand-peach/40">
             <div className="mb-12 text-center lg:text-left space-y-4">
                <h2 className="text-4xl font-display font-bold">Standard Batch Timings</h2>

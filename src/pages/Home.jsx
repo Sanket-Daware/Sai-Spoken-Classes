@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
-import { CircleCheck, GraduationCap, Users, BookOpen, Clock, Award, PlayCircle, Store, MessageSquare, Search, MapPin, Phone, Facebook, Twitter, Instagram, Youtube, Linkedin, ArrowLeft, ArrowRight, Heart, Star, Play, BarChart2 } from 'lucide-react'
+import { CircleCheck, GraduationCap, Users, BookOpen, Clock, Award, PlayCircle, Store, MessageSquare, Search, MapPin, Phone, Facebook, Twitter, Instagram, Youtube, Linkedin, ArrowLeft, ArrowRight, Heart, Star, Play, BarChart2, UserCheck } from 'lucide-react'
 
 import heroGirl from '../assets/hero-girl.png'
 import heroBg from '../assets/hero-bg.png'
@@ -9,12 +9,12 @@ import { mainAchievement, achievementStats } from '../data/achievementsData'
 import FloatingGrammarBg from '../components/FloatingGrammarBg'
 
 const highlights = [
-  { title: 'Trained Faculty', desc: 'Learn from expert grammar coaches and spoken trainers.', icon: GraduationCap, bg: 'bg-[#FEFAE0]' }, // Soft Cream
-  { title: 'Live Classes', desc: 'Interactive sessions with real-time feedback.', icon: PlayCircle, bg: 'bg-[#EAF6ED]' }, // Soft Green
-  { title: 'Revision Support', desc: 'Weekly revision and learning materials provided.', icon: BookOpen, bg: 'bg-[#EBF4F6]' }, // Soft Blue
-  { title: 'Certificates', desc: 'Get certified after successful course completion.', icon: Award, bg: 'bg-[#FEF3EC]' }, // Pale Peach
-  { title: 'Franchise Option', desc: 'Join our growing network of English centers.', icon: Store, bg: 'bg-[#F3F0F7]' }, // Pale Lavender
-  { title: 'Special Batches', desc: 'Tailored for kids, students, and homemakers.', icon: Users, bg: 'bg-[#FDF7DC]' }, // Soft Yellow
+  { title: 'Trained Faculty', desc: 'Learn from expert grammar coaches and spoken trainers.', icon: GraduationCap, bg: 'bg-[#F1E9A3]' }, // Clearly darker Cream
+  { title: 'Live Classes', desc: 'Interactive sessions with real-time feedback.', icon: PlayCircle, bg: 'bg-[#C5E2CD]' }, // Clearly darker Green
+  { title: 'Revision Support', desc: 'Weekly revision and learning materials provided.', icon: BookOpen, bg: 'bg-[#C7DBE0]' }, // Clearly darker Blue
+  { title: 'Certificates', desc: 'Get certified after successful course completion.', icon: Award, bg: 'bg-[#FBD1B5]' }, // Clearly darker Pink/Peach
+  { title: 'Franchise Option', desc: 'Join our growing network of English centers.', icon: Store, bg: 'bg-[#DFCDE2]' }, // Clearly darker Purple
+  { title: 'Special Batches', desc: 'Tailored for kids, students, and homemakers.', icon: Users, bg: 'bg-[#F1E4A3]' }, // Clearly darker Yellow
 ]
 
 const courses = [
@@ -161,23 +161,22 @@ export default function Home() {
   return (
     <div className="overflow-hidden">
       {/* Academy Refined Hero Slider */}
-      <section className={`relative flex items-center overflow-hidden min-h-screen pt-32 pb-0 transition-all duration-[800ms]`}>
+      <section className="relative flex items-center overflow-hidden h-[100dvh] pt-20 lg:pt-32 pb-0 bg-brand-surface">
         {/* Aesthetic Background Image with Soft Overlay */}
         <div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroBg})` }}
         >
           {/* Soft White Overlay for readability and premium feel */}
-          <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-brand-surface/60 backdrop-blur-[2px]" />
 
           {/* Subtle Dynamic Gradient */}
           <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-transparent to-white/10" />
         </div>
 
         {/* Subtle Background Accents */}
-        <div className="absolute top-0 right-0 w-[400px] h-70vh bg-brand-primary/5 rounded-l-[100px] blur-3xl pointer-events-none z-1" />
+        <div className="absolute top-0 right-0 w-[400px] h-[70vh] bg-brand-primary/5 rounded-l-[100px] blur-3xl pointer-events-none z-1" />
 
-        {/* Slide-specific decorative shapes - Educal Style Left Circle */}
         {slide.type === 'single' && (
           <motion.div
             initial={{ x: -60, opacity: 0 }}
@@ -187,312 +186,421 @@ export default function Home() {
           />
         )}
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-6 sm:px-8 md:px-12 relative z-10 h-full">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-16 ${slide.type === 'gallery' ? 'items-center' : 'items-end'} h-full`}
+              exit={{ opacity: 0, x: -10 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full"
             >
-              {/* Left Content: Dynamic per slide */}
-              <div className="space-y-8 md:space-y-10 pl-4 md:pl-[30px] flex flex-col justify-center h-full min-h-[300px] lg:min-h-[400px]">
-                <div className="space-y-6">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/60 backdrop-blur-sm rounded-full border border-brand-peach shadow-sm">
-                    <span className="flex h-1.5 w-1.5 rounded-full bg-brand-primary animate-pulse" />
-                    <span className="text-[10px] font-bold text-brand-text/80 uppercase tracking-widest">{slide.badge}</span>
+              <div className={`flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-16 ${slide.type === 'gallery' ? 'items-center' : 'lg:items-center items-end'} h-full max-h-full`}>
+                {/* Left Content: Dynamic per slide */}
+                <div className="space-y-4 md:space-y-10 pl-0 lg:pl-[30px] flex flex-col items-center lg:items-start text-center lg:text-left justify-center lg:self-center lg:min-h-[400px] w-full mt-8 lg:mt-0 relative z-30">
+                  <div className="space-y-6">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/60 backdrop-blur-sm rounded-full border border-brand-peach shadow-sm">
+                      <span className="flex h-1.5 w-1.5 rounded-full bg-brand-primary animate-pulse" />
+                      <span className="text-[10px] font-bold text-brand-text/80 uppercase tracking-widest">{slide.badge}</span>
+                    </div>
+
+                    <div className="space-y-2">
+                      <h1 className="text-2xl md:text-3xl lg:text-4xl font-display leading-[1.1] text-brand-text font-medium">
+                        {slide.headline}
+                      </h1>
+                      {slide.subHeadline && (
+                        <h2 className="text-sm md:text-lg font-display text-brand-primary italic font-light">
+                          {slide.subHeadline}
+                        </h2>
+                      )}
+                    </div>
+
+                    <p className="text-xs md:text-sm text-brand-text-muted font-light italic max-w-lg">
+                      "{slide.subtext}"
+                    </p>
                   </div>
 
-                  <div className="space-y-2">
-                    <h1 className="text-2xl md:text-3xl lg:text-4xl font-display leading-[1.1] text-brand-text font-medium">
-                      {slide.headline}
-                    </h1>
-                    {slide.subHeadline && (
-                      <h2 className="text-sm md:text-lg font-display text-brand-primary italic font-light">
-                        {slide.subHeadline}
-                      </h2>
-                    )}
+                  <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6">
+                    <Link to={slide.ctaLink} className="btn-primary py-2 px-6 sm:py-2.5 sm:px-8 text-[10px] sm:text-xs font-semibold shadow-xl shadow-brand-primary/20 border-b-4 border-r-4 border-brand-primary/40 active:translate-y-1 active:border-b-0 transition-all flex items-center gap-2">
+                      {slide.ctaText} <CircleCheck size={14} className="sm:size-4" />
+                    </Link>
                   </div>
 
-                  <p className="text-xs md:text-sm text-brand-text-muted font-light italic max-w-lg">
-                    "{slide.subtext}"
-                  </p>
+                  {/* Enrollment Bar - Only on Slide 1 as requested */}
+                  {slide.type === 'gallery' && (
+                    <div className="flex flex-col sm:flex-row items-center bg-brand-surface p-1.5 rounded-2xl md:rounded-full shadow-2xl border border-brand-peach/30 max-w-2xl group focus-within:ring-2 focus-within:ring-brand-primary/10 transition-all">
+                      <div className="flex items-center gap-2.5 px-4 py-1.5 flex-grow border-b sm:border-b-0 sm:border-r border-brand-peach/20 w-full sm:w-auto">
+                        <BookOpen size={16} className="text-brand-primary" />
+                        <input
+                          type="text"
+                          placeholder="e.g. Basic, Advanced, Grammar, Interview Prep..."
+                          className="bg-transparent border-none focus:outline-none text-brand-text font-medium w-full text-xs placeholder:text-brand-text/30"
+                        />
+                      </div>
+                      <div className="flex items-center gap-2.5 px-4 py-1.5 flex-grow w-full sm:w-auto">
+                        <Phone size={16} className="text-brand-primary" />
+                        <input
+                          type="text"
+                          placeholder="Your Phone Number"
+                          className="bg-transparent border-none focus:outline-none text-brand-text font-medium w-full text-xs placeholder:text-brand-text/30"
+                        />
+                      </div>
+                      <button className="w-full sm:w-auto bg-brand-primary text-white py-2 px-6 sm:py-2.5 sm:px-8 rounded-full flex items-center justify-center gap-2 text-[10px] sm:text-xs font-bold whitespace-nowrap shadow-xl shadow-brand-primary/20 hover:bg-brand-primary-light transition-all border-b-4 border-r-4 border-brand-primary/40 active:translate-y-1 active:border-b-0">
+                        Enquire Now <MessageSquare size={14} className="sm:size-4" />
+                      </button>
+                    </div>
+                  )}
                 </div>
 
-                <div className="flex flex-col sm:flex-row items-center gap-6">
-                  <Link to={slide.ctaLink} className="btn-primary py-2.5 px-8 text-xs font-semibold shadow-xl shadow-brand-primary/20 border-b-4 border-r-4 border-brand-primary/40 active:translate-y-1 active:border-b-0 transition-all flex items-center gap-2">
-                    {slide.ctaText} <CircleCheck size={16} />
-                  </Link>
-                </div>
+                {/* Right Content Column */}
+                <div className="relative h-full">
+                  {slide.type === 'gallery' ? (
+                    <div className="flex items-center justify-center gap-2 sm:gap-3 h-[25vh] sm:h-[400px] lg:h-[550px] relative mt-2 lg:mt-0">
+                      {/* Pill Image 1 */}
+                      <motion.div
+                        animate={{ y: [0, -10, 0] }}
+                        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                        className="w-[60px] h-[160px] sm:w-[92px] sm:h-[310px] lg:w-[110px] lg:h-[360px] rounded-full overflow-hidden border-4 border-white shadow-2xl relative z-10 self-end border-b-8 border-r-4 border-brand-peach/40"
+                      >
+                        <img
+                          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=600&auto=format&fit=crop"
+                          className="w-full h-full object-cover grayscale-0 md:grayscale-[15%] md:hover:grayscale-0 transition-all duration-700"
+                          alt="Trained Student"
+                        />
+                      </motion.div>
 
-                {/* Enrollment Bar - Only on Slide 1 as requested */}
-                {slide.type === 'gallery' && (
-                  <div className="flex flex-col sm:flex-row items-center bg-white p-1.5 rounded-2xl md:rounded-full shadow-2xl border border-brand-peach/30 max-w-2xl group focus-within:ring-2 focus-within:ring-brand-primary/10 transition-all">
-                    <div className="flex items-center gap-2.5 px-4 py-1.5 flex-grow border-b sm:border-b-0 sm:border-r border-brand-peach/20 w-full sm:w-auto">
-                      <BookOpen size={16} className="text-brand-primary" />
-                      <input
-                        type="text"
-                        placeholder="e.g. Basic, Advanced, Grammar, Interview Prep..."
-                        className="bg-transparent border-none focus:outline-none text-brand-text font-medium w-full text-xs placeholder:text-brand-text/30"
-                      />
+                      {/* Pill Image 2 */}
+                      <motion.div
+                        animate={{ y: [0, 10, 0] }}
+                        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                        className="w-[75px] h-[210px] sm:w-[115px] sm:h-[400px] lg:w-[135px] lg:h-[480px] rounded-full overflow-hidden border-4 border-white shadow-2xl relative z-20 border-b-8 border-r-4 border-brand-peach/40"
+                      >
+                        <img
+                          src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop"
+                          className="w-full h-full object-cover object-[center_20%]"
+                          alt="Expert Academy Trainer"
+                        />
+                        <div className="absolute inset-0 bg-linear-to-t from-brand-primary/20 to-transparent pointer-events-none" />
+                      </motion.div>
+
+                      {/* Pill Image 3 */}
+                      <motion.div
+                        animate={{ y: [0, -8, 0] }}
+                        transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+                        className="w-[65px] h-[180px] sm:w-[100px] sm:h-[320px] lg:w-[120px] lg:h-[360px] rounded-full overflow-hidden border-4 border-white shadow-2xl relative z-10 self-start mt-4 border-b-8 border-r-4 border-brand-peach/40"
+                      >
+                        <img
+                          src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=600&auto=format&fit=crop"
+                          className="w-full h-full object-cover grayscale-0 md:grayscale-[10%] md:hover:grayscale-0 transition-all duration-700"
+                          alt="Sai Spoken Classes Group Session"
+                        />
+                      </motion.div>
                     </div>
-                    <div className="flex items-center gap-2.5 px-4 py-1.5 flex-grow w-full sm:w-auto">
-                      <Phone size={16} className="text-brand-primary" />
-                      <input
-                        type="text"
-                        placeholder="Your Phone Number"
-                        className="bg-transparent border-none focus:outline-none text-brand-text font-medium w-full text-xs placeholder:text-brand-text/30"
-                      />
+                  ) : (
+                    <div className="flex flex-1 items-end justify-center w-full relative lg:mt-0 opacity-0 pointer-events-none lg:opacity-100 lg:pointer-events-auto">
+                      {/* Ghost container to maintain layout structure on desktop */}
+                      <div className="h-[82vh] w-full" />
                     </div>
-                    <button className="w-full sm:w-auto bg-brand-primary text-white py-2.5 px-8 rounded-full flex items-center justify-center gap-2 text-xs font-bold whitespace-nowrap shadow-xl shadow-brand-primary/20 hover:bg-brand-primary-light transition-all border-b-4 border-r-4 border-brand-primary/40 active:translate-y-1 active:border-b-0">
-                      Enquire Now <MessageSquare size={16} />
-                    </button>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
 
-              {/* Right Content: Conditional layout */}
-              <div className="relative">
-                {slide.type === 'gallery' ? (
-                  <div className="flex items-center justify-center gap-2 sm:gap-3 h-[360px] sm:h-[500px] lg:h-[550px] relative mt-8 lg:mt-0">
-                    {/* Pill Image 1 */}
-                    <motion.div
-                      animate={{ y: [0, -10, 0] }}
-                      transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                      className="w-[72px] h-[240px] sm:w-[92px] sm:h-[310px] lg:w-[110px] lg:h-[360px] rounded-full overflow-hidden border-4 border-white shadow-2xl relative z-10 self-end border-b-8 border-r-4 border-brand-peach/40"
-                    >
-                      <img
-                        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=600&auto=format&fit=crop"
-                        className="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-700"
-                        alt="Trained Student"
-                      />
-                    </motion.div>
-
-                    {/* Pill Image 2 */}
-                    <motion.div
-                      animate={{ y: [0, 10, 0] }}
-                      transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                      className="w-[85px] h-[310px] sm:w-[115px] sm:h-[400px] lg:w-[135px] lg:h-[480px] rounded-full overflow-hidden border-4 border-white shadow-2xl relative z-20 border-b-8 border-r-4 border-brand-peach/40"
-                    >
-                      <img
-                        src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?q=80&w=600&auto=format&fit=crop"
-                        className="w-full h-full object-cover"
-                        alt="Expert Academy Trainer"
-                      />
-                      <div className="absolute inset-0 bg-linear-to-t from-brand-primary/20 to-transparent pointer-events-none" />
-                    </motion.div>
-
-                    {/* Pill Image 3 */}
-                    <motion.div
-                      animate={{ y: [0, -8, 0] }}
-                      transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
-                      className="w-[78px] h-[260px] sm:w-[100px] sm:h-[320px] lg:w-[120px] lg:h-[360px] rounded-full overflow-hidden border-4 border-white shadow-2xl relative z-10 self-start mt-8 border-b-8 border-r-4 border-brand-peach/40"
-                    >
-                      <img
-                        src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=600&auto=format&fit=crop"
-                        className="w-full h-full object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-700"
-                        alt="Sai Spoken Classes Group Session"
-                      />
-                    </motion.div>
-                  </div>
-                ) : (
-                  <div className="flex items-end justify-center h-[500px] sm:h-[600px] lg:h-[82vh] relative mt-12 lg:mt-0">
-                    {/* Background Blob - Teal (Matches Slide 2) */}
-                    <motion.div
-                      initial={{ scale: 0.8, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 0.25 }}
-                      transition={{ duration: 1.2, ease: "easeOut" }}
-                      className="absolute w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] bg-[#70C7C6] rounded-full blur-[60px] z-0 pointer-events-none"
+              {/* Absolute Centered Girl Subject - True Screen Centering for Mobile */}
+              {slide.type !== 'gallery' && (
+                <div className="absolute inset-0 flex items-end justify-center lg:justify-end lg:pr-[12%] pointer-events-none z-40">
+                  <motion.div
+                    key={`girl-${currentSlide}`}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.8 }}
+                    className="relative flex items-end grow-0 group"
+                  >
+                    <img
+                      src={heroGirl}
+                      className="h-[45vh] sm:h-[550px] lg:h-[85vh] w-auto object-contain object-bottom drop-shadow-2xl mb-[-1px] relative z-10"
+                      alt="Join our community"
                     />
 
-                    {/* Girl Image - No Border, High Visibility */}
-                    <motion.div
-                      key={currentSlide}
-                      initial={{ y: 20, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      transition={{ duration: 0.8, delay: 0.2 }}
-                      className="relative z-20 h-full w-full flex items-end justify-center"
-                    >
-                      <img
-                        src={heroGirl}
-                        className="h-full w-auto object-contain object-bottom drop-shadow-2xl mb-0"
-                        alt="Join our community"
-                      />
-
-                      {/* Floating Accent Cards (Reference Style) */}
-                      {/* 1. Congrats Card */}
+                    {/* Floating Accent Cards - Optimized responsiveness */}
+                    <div className="absolute inset-0 w-full h-full pointer-events-none">
+                      {/* 1. Results Card */}
                       <motion.div
-                        initial={{ x: -30, opacity: 0 }}
+                        initial={{ x: -20, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: 0.6, duration: 0.8 }}
-                        className="absolute top-[15%] left-[-15%] lg:left-[-5%] bg-white/95 p-3 rounded-2xl shadow-xl border border-brand-peach/30 backdrop-blur-sm z-30 hidden sm:flex items-center gap-3 animate-float"
+                        className="absolute top-[5%] -left-[25%] sm:-left-[35%] lg:top-[15%] lg:-left-[25%] bg-white/95 p-1 sm:p-1.5 lg:p-1.5 rounded-lg sm:rounded-xl lg:rounded-xl shadow-xl border border-brand-peach/30 backdrop-blur-sm z-30 flex items-center gap-1 sm:gap-1.5 lg:gap-2 animate-float"
                       >
-                        <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                          <CircleCheck size={20} />
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                          <CircleCheck size={10} className="sm:size-[14px] lg:size-4" />
                         </div>
-                        <div className="pr-4">
-                          <p className="text-[10px] font-bold text-brand-text/50 uppercase tracking-tight">Congratulation</p>
-                          <p className="text-xs font-bold text-brand-text whitespace-nowrap">Your admission completed</p>
+                        <div className="pr-1 sm:pr-1.5 lg:pr-2">
+                          <p className="text-[5px] sm:text-[6px] lg:text-[8px] font-bold text-brand-text/50 uppercase tracking-tight whitespace-nowrap">Success</p>
+                          <p className="text-[7px] sm:text-[8px] lg:text-[10px] font-bold text-brand-text whitespace-nowrap">100% Results Oriented</p>
                         </div>
                       </motion.div>
 
                       {/* 2. Success Stories Card */}
                       <motion.div
-                        initial={{ y: 30, opacity: 0 }}
+                        initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.8, duration: 0.8 }}
-                        className="absolute bottom-[20%] left-[-10%] lg:left-[0%] bg-white/95 p-3 rounded-2xl shadow-xl border border-brand-peach/30 backdrop-blur-sm z-30 hidden sm:flex items-center gap-3"
+                        className="absolute top-[45%] -left-[30%] sm:-left-[30%] lg:top-[50%] lg:-left-[15%] bg-white/95 p-1 sm:p-1.5 lg:p-1.5 rounded-lg sm:rounded-xl lg:rounded-xl shadow-xl border border-brand-peach/30 backdrop-blur-sm z-30 flex items-center gap-1 sm:gap-1.5 lg:gap-2"
                         style={{ animation: 'float 5s ease-in-out infinite reverse' }}
                       >
-                        <div className="w-10 h-10 bg-brand-primary/10 rounded-full flex items-center justify-center text-brand-primary font-bold text-sm">
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 bg-brand-primary/10 rounded-full flex items-center justify-center text-brand-primary font-bold text-[7px] sm:text-[8px] lg:text-[11px]">
                           5K+
                         </div>
-                        <div className="pr-4">
-                          <p className="text-[10px] font-bold text-brand-text/50 uppercase">Success</p>
-                          <p className="text-xs font-bold text-brand-text">Happy Stories</p>
+                        <div className="pr-1 sm:pr-1.5 lg:pr-2">
+                          <p className="text-[5px] sm:text-[6px] lg:text-[8px] font-bold text-brand-text/50 uppercase whitespace-nowrap">Community</p>
+                          <p className="text-[7px] sm:text-[8px] lg:text-[10px] font-bold text-brand-text whitespace-nowrap">Happy Stories</p>
                         </div>
                       </motion.div>
 
-                      {/* 3. Live Batch Card */}
+                      {/* 3. Rating Card */}
                       <motion.div
-                        initial={{ x: 30, opacity: 0 }}
+                        initial={{ x: 20, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: 1, duration: 0.8 }}
-                        className="absolute bottom-[25%] right-[-10%] lg:right-[5%] bg-white/95 p-3 rounded-2xl shadow-xl border border-brand-peach/30 backdrop-blur-sm z-30 hidden sm:flex items-center gap-3 animate-float"
+                        className="absolute top-[10%] -right-[35%] sm:-right-[35%] lg:top-[25%] lg:-right-[20%] bg-white/95 p-1 sm:p-1.5 lg:p-1.5 rounded-lg sm:rounded-xl lg:rounded-xl shadow-xl border border-brand-peach/30 backdrop-blur-sm z-30 flex items-center gap-1 sm:gap-1.5 lg:gap-2 animate-float"
                       >
-                        <div className="w-10 h-10 bg-brand-accent/20 rounded-full flex items-center justify-center text-brand-accent">
-                          <PlayCircle size={20} fill="currentColor" className="text-brand-accent" />
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600">
+                          <Star size={10} className="sm:size-[14px] lg:size-4" fill="currentColor" />
                         </div>
-                        <div className="pr-4">
-                          <p className="text-[10px] font-bold text-brand-text/50 uppercase tracking-tight">Active Now</p>
-                          <p className="text-xs font-bold text-brand-text whitespace-nowrap">Live Spoken Batch</p>
+                        <div className="pr-1 sm:pr-1.5 lg:pr-2">
+                          <p className="text-[5px] sm:text-[6px] lg:text-[8px] font-bold text-brand-text/50 uppercase tracking-tight whitespace-nowrap">Rating</p>
+                          <p className="text-[7px] sm:text-[8px] lg:text-[10px] font-bold text-brand-text whitespace-nowrap">4.9/5 Star Academy</p>
                         </div>
                       </motion.div>
-                    </motion.div>
-                  </div>
-                )}
 
-                {/* Decorative Academy Element */}
-                <div className="absolute -z-10 w-72 h-72 bg-brand-primary/5 rounded-full blur-3xl -top-20 -right-20 animate-pulse" />
-              </div>
+                      {/* 4. Live Batch Card */}
+                      <motion.div
+                        initial={{ y: -20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 1.2, duration: 0.8 }}
+                        className="absolute top-[50%] -right-[42%] sm:-right-[40%] lg:top-[45%] lg:-right-[35%] bg-white/95 p-1 sm:p-1.5 lg:p-1.5 rounded-lg sm:rounded-xl lg:rounded-xl shadow-xl border border-brand-peach/30 backdrop-blur-sm z-30 flex items-center gap-1 sm:gap-1.5 lg:gap-2"
+                        style={{ animation: 'float 6s ease-in-out infinite' }}
+                      >
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 bg-brand-accent/20 rounded-full flex items-center justify-center text-brand-accent">
+                          <PlayCircle size={10} className="sm:size-[14px] lg:size-4" fill="currentColor" />
+                        </div>
+                        <div className="pr-1 sm:pr-1.5 lg:pr-2">
+                          <p className="text-[5px] sm:text-[6px] lg:text-[8px] font-bold text-brand-text/50 uppercase whitespace-nowrap">Active Now</p>
+                          <p className="text-[7px] sm:text-[8px] lg:text-[10px] font-bold text-brand-text whitespace-nowrap">Interactive Live Sessions</p>
+                        </div>
+                      </motion.div>
+
+                      {/* 5. Experience Card */}
+                      <motion.div
+                        initial={{ x: 20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ delay: 1.4, duration: 0.8 }}
+                        className="absolute top-[80%] -right-[35%] sm:-right-[45%] lg:top-[70%] lg:-right-[15%] bg-white/95 p-1 sm:p-1.5 lg:p-1.5 rounded-lg sm:rounded-xl lg:rounded-xl shadow-xl border border-brand-peach/30 backdrop-blur-sm z-30 flex items-center gap-1 sm:gap-1.5 lg:gap-2 animate-float"
+                      >
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                          <Award size={10} className="sm:size-[14px] lg:size-4" />
+                        </div>
+                        <div className="pr-1 sm:pr-1.5 lg:pr-2">
+                          <p className="text-[5px] sm:text-[6px] lg:text-[8px] font-bold text-brand-text/50 uppercase whitespace-nowrap">Legacy</p>
+                          <p className="text-[7px] sm:text-[8px] lg:text-[10px] font-bold text-brand-text whitespace-nowrap">16+ Years Excellence</p>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                </div>
+              )}
             </motion.div>
           </AnimatePresence>
-
-
         </div>
       </section>
 
-      {/* About Us Section - Refined Teal Design */}
-      <section id="about-us" className="py-16 lg:py-24 bg-brand-surface relative overflow-hidden">
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16">
-            {/* Left Content */}
+      {/* About Us Section - Redesigned Perks Layout */}
+      {/* Why Choose Us Section - Redesigned Layout */}
+      <section id="about" className="py-12 lg:py-16 relative overflow-hidden bg-brand-surface">
+        <div className="container mx-auto px-4 relative z-10 max-w-6xl">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-10 lg:mb-16">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="space-y-8"
+              className="inline-flex items-center gap-2 px-3 py-1 bg-brand-primary/5 rounded-full border border-brand-primary/10 mb-4"
             >
-              <div className="flex items-center gap-3">
-                <div className="w-1.5 h-8 bg-[#70C7C6]" />
-                <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-brand-text/40">About Us</span>
+              <div className="flex gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-primary" />
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-primary/40" />
               </div>
-
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-display text-brand-text font-medium leading-[1.1] max-w-lg">
-                Best English <br />
-                <span className="text-[#70C7C6]">Learning Center</span>
-              </h2>
-
-              <p className="text-sm text-brand-text-muted leading-relaxed max-w-md font-light italic">
-                - [x] Aggressively shrink 'About Us' section height for frame-fit.
-                - [x] Apply Teal theme and layout refinements.
-                - [x] Smooth scroll and jump fixes.
-                - [x] Remove 'white corners' (distracting decorations and color mismatches).
-                - [x] Apply 'slim' typography (font-medium/semibold) to About Us section.
-                - [x] Fix Hero carousel scroll jump by locking parent height.
-                - [ ] Final layout verification in browser.
-                n English to help you build confidence."
-              </p>
-
-              <Link to="/about" className="inline-flex items-center gap-3 bg-[#70C7C6] text-white py-3.5 px-10 rounded-xl font-bold text-xs shadow-lg shadow-[#70C7C6]/20 hover:bg-[#5ba7a6] transition-all group">
-                Enrol Now
-                <div className="w-6 h-[1px] bg-white group-hover:w-10 transition-all" />
-              </Link>
+              <span className="text-[10px] font-bold text-brand-primary uppercase tracking-[0.2em]">Why Choose Us</span>
             </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-2xl md:text-3xl lg:text-4xl font-display text-brand-text font-medium tracking-tight leading-tight max-w-2xl mx-auto"
+            >
+              Empowering Your Success with <span className="text-brand-primary italic font-signature font-normal text-2xl md:text-3xl lg:text-4xl">Language Expertise</span>
+            </motion.h2>
+          </div>
 
-            {/* Right Content - Image & Blob & Social */}
-            <div className="relative mt-8 lg:mt-0">
-              {/* Teal Blob behind image (Matches color) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* Left side: Staggered Images */}
+            <div className="relative h-[260px] md:h-[450px] max-w-[320px] md:max-w-[400px] mx-auto lg:mx-0 w-full group">
+              {/* Top Left Image */}
               <motion.div
-                animate={{ scale: [1, 1.05, 1], rotate: [0, 5, 0] }}
-                transition={{ duration: 8, repeat: Infinity }}
-                className="absolute left-[0%] top-[20%] w-[350px] h-[350px] bg-[#70C7C6] rounded-full z-0 opacity-80 blur-[40px]"
-              />
-
-              {/* Main Student Image */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, x: -30, y: 20 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
                 viewport={{ once: true }}
-                className="relative z-10 w-full max-w-[280px] lg:max-w-[340px] mx-auto aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl border-white border-[10px]"
+                transition={{ duration: 0.8 }}
+                className="absolute top-0 left-0 w-[70%] h-[60%] rounded-[20px] md:rounded-[30px] overflow-hidden shadow-2xl border-[4px] md:border-[6px] border-white ring-1 ring-black/5 z-20"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=600&auto=format&fit=crop"
-                  className="w-full h-full object-cover"
-                  alt="Sai Spoken Classes Student"
+                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop"
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  alt="Sai Spoken Classes Students"
                 />
               </motion.div>
 
-              {/* Floating Social Media Tab - Teal */}
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col gap-6 p-5 bg-[#70C7C6] text-white rounded-l-3xl z-20 shadow-xl hidden md:flex">
-                <a href="#" className="hover:scale-110 transition-transform"><Twitter size={14} /></a>
-                <a href="#" className="hover:scale-110 transition-transform"><Facebook size={14} /></a>
-                <a href="#" className="hover:scale-110 transition-transform"><Instagram size={14} /></a>
-                <a href="#" className="hover:scale-110 transition-transform"><Youtube size={14} /></a>
-              </div>
+              {/* Bottom Right Image */}
+              <motion.div
+                initial={{ opacity: 0, x: 30, y: -20 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="absolute bottom-0 right-0 w-[70%] h-[60%] rounded-[20px] md:rounded-[30px] overflow-hidden shadow-2xl border-[4px] md:border-[6px] border-white ring-1 ring-black/5 z-10"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop"
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-0 md:grayscale-[20%] md:group-hover:grayscale-0"
+                  alt="Sai Spoken Classes Learning Environment"
+                />
+              </motion.div>
+
+              {/* Floating Badge (Smaller) */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30"
+              >
+                <div className="relative w-16 h-16 md:w-24 md:h-24">
+                  <svg className="w-full h-full" viewBox="0 0 100 100">
+                    <defs>
+                      <path id="circlePathSmall" d="M 50, 50 m -35, 0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
+                    </defs>
+                    <text className="text-[12px] md:text-[11px] font-bold fill-brand-primary uppercase tracking-[0.2em]">
+                      <textPath xlinkHref="#circlePathSmall">
+                        Choose Sai Academy • Why Choose Us •
+                      </textPath>
+                    </text>
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-7 h-7 md:w-10 md:h-10 bg-brand-primary rounded-full flex items-center justify-center text-white shadow-lg">
+                      <ArrowRight className="size-3.5 md:size-4 -rotate-45" />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
+
+            {/* Right side: Content & Progress Bars */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="flex flex-col"
+            >
+              <p className="text-[14px] text-brand-text-muted leading-relaxed font-light mb-6 max-w-xl">
+                We bridge the gap between classroom learning and real-world communication, ensuring you excel with confidence in every sphere of life.
+              </p>
+
+              {/* Progress Bars (More Compact) */}
+              <div className="space-y-6 mb-8">
+                {[
+                  { label: "Quality Training & Fluency", value: 95 },
+                  { label: "Expert Mentorship & Support", value: 90 },
+                  { label: "Practical Learning Material", value: 92 }
+                ].map((skill, index) => (
+                  <div key={index} className="space-y-2">
+                    <div className="flex justify-between items-center text-[12px] font-bold text-brand-text uppercase tracking-tight">
+                      <span>{skill.label}</span>
+                      <span className="text-brand-primary">{skill.value}%</span>
+                    </div>
+                    <div className="h-1.5 w-full bg-brand-peach rounded-full overflow-hidden relative">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.value}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.5, delay: index * 0.1 }}
+                        className="h-full bg-brand-primary rounded-full"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div>
+                <Link to="/about" className="inline-flex items-center gap-3 bg-brand-primary text-white py-2 px-6 lg:py-3 lg:px-8 rounded-xl font-bold text-[10px] lg:text-[11px] shadow-xl shadow-brand-primary/20 hover:bg-brand-primary-light transition-all group overflow-hidden relative">
+                  <span className="relative z-10 flex items-center gap-3">
+                    About Academy
+                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Link>
+              </div>
+            </motion.div>
           </div>
 
-          {/* Dynamic Teal Feature Cards */}
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-0 rounded-3xl md:rounded-[30px] overflow-hidden shadow-2xl relative z-30">
-            {/* Card 1 */}
-            <div className="bg-white p-8 lg:p-12 flex flex-col items-center text-center space-y-4 group hover:bg-[#70C7C6] transition-all duration-500">
-              <div className="w-14 h-14 rounded-full bg-brand-primary/10 flex items-center justify-center text-[#70C7C6] group-hover:bg-white/20 group-hover:text-white transition-colors">
-                <Users size={26} />
-              </div>
-              <h3 className="font-semibold text-brand-text group-hover:text-white transition-colors">Quality Faculty</h3>
-              <p className="text-xs text-brand-text-muted group-hover:text-white/80 transition-colors leading-relaxed">Expert mentors dedicated to your language journey with years of excellence.</p>
-            </div>
+          {/* Bottom Stats Bar (Perfected Reference Match) */}
+          <div className="mt-12 lg:mt-20 pt-8 lg:pt-10 border-t border-brand-peach/50 px-1 lg:px-0">
+            <div className="flex justify-between items-center w-full">
+              {[
+                { number: "3k+", label: "Successful Projects" },
+                { number: "200+", label: "Expert Team" },
+                { number: "350+", label: "Happy Customers" },
+                { number: "16+", label: "Years Experience" }
+              ].map((stat, idx) => (
+                <div key={idx} className="flex items-center grow justify-center first:justify-start last:justify-end">
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="flex flex-col items-center lg:items-start text-center lg:text-left"
+                  >
+                    <div className="text-[15px] md:text-2xl lg:text-4xl font-display font-bold text-brand-text mb-0.5 whitespace-nowrap">
+                      {stat.number}
+                    </div>
+                    <span className="text-[6px] md:text-[9px] lg:text-[11px] font-medium text-brand-text-muted uppercase tracking-[0.05em] lg:tracking-wider whitespace-nowrap">
+                      {stat.label}
+                    </span>
+                  </motion.div>
 
-            {/* Card 2 - Featured (Teal) */}
-            <div className="bg-[#70C7C6] p-8 lg:p-12 flex flex-col items-center text-center space-y-4 group hover:bg-[#5BA7A6] transition-all duration-500">
-              <div className="w-14 h-14 rounded-full bg-white/40 flex items-center justify-center text-brand-text group-hover:bg-white/20 group-hover:text-white transition-colors">
-                <CircleCheck size={26} />
-              </div>
-              <h3 className="font-semibold text-brand-text group-hover:text-white transition-colors">Live Support</h3>
-              <p className="text-xs text-brand-text group-hover:text-white/90 transition-colors leading-relaxed">24/7 support and live interactive sessions to accelerate your confidence.</p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-white p-8 lg:p-12 flex flex-col items-center text-center space-y-4 group hover:bg-[#70C7C6] transition-all duration-500">
-              <div className="w-14 h-14 rounded-full bg-brand-primary/10 flex items-center justify-center text-[#70C7C6] group-hover:bg-white/20 group-hover:text-white transition-colors">
-                <BookOpen size={26} />
-              </div>
-              <h3 className="font-semibold text-brand-text group-hover:text-white transition-colors">Online Library</h3>
-              <p className="text-xs text-brand-text-muted group-hover:text-white/80 transition-colors leading-relaxed">Comprehensive study materials and digital resources at your fingertips.</p>
+                  {/* Custom Separator with Ornament (Scaled for Mobile) */}
+                  {idx < 3 && (
+                    <div className="flex items-center px-1.5 sm:px-4 md:px-8 xl:px-12">
+                      <div className="h-6 md:h-10 w-px bg-brand-text/30 relative flex items-center justify-center">
+                        {/* Ornament: Scaled Semicircles and Dot */}
+                        <div className="absolute flex items-center justify-center -translate-x-[1.5px]">
+                          {/* Semicircles */}
+                          <div className="flex -space-x-[3px] md:-space-x-1.5 translate-x-1.5 md:translate-x-2.5">
+                            <div className="w-2.5 h-2.5 md:w-5 md:h-5 rounded-r-full bg-brand-primary opacity-20 border-r border-brand-primary/10" />
+                            <div className="w-2.5 h-2.5 md:w-5 md:h-5 rounded-r-full bg-brand-primary opacity-30 border-r border-brand-primary/20" />
+                          </div>
+                          {/* Dot */}
+                          <div className="w-1.5 h-1.5 md:w-3 md:h-3 rounded-full bg-brand-primary shadow-[0_0_5px_rgba(211,47,47,0.4)] absolute -left-0.5 md:-left-1.5 z-10" />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* Our Teachers Section - Grid Design */}
-      <section id="faculty-grid" className="py-24 relative overflow-hidden bg-white">
-        {/* Background Decorative Blobs */}
-        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-[#F7A781] rounded-full blur-[80px] opacity-40 -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#FAD26C] rounded-full blur-[80px] opacity-40 translate-x-1/3 translate-y-1/3 pointer-events-none" />
+      <section id="faculty" className="pt-24 pb-12 lg:pb-16 relative overflow-hidden bg-white/50">
 
         <div className="container mx-auto px-4 relative z-10 max-w-6xl mb-16">
           {/* Header */}
@@ -503,7 +611,7 @@ export default function Home() {
                 Presenting Academy, the tech school of the future. We teach you the right skills to be prepared for tomorrow.
               </p>
             </div>
-            <Link to="/contact" className="inline-block bg-[#0A4B92] text-white py-3.5 px-8 rounded-full font-bold text-xs uppercase tracking-wider hover:bg-[#083a72] transition-colors shadow-lg self-start md:self-auto">
+            <Link to="/contact" className="inline-block bg-brand-primary text-white py-2.5 px-7 md:py-3.5 md:px-8 rounded-full font-bold text-[10px] md:text-xs uppercase tracking-wider hover:bg-brand-primary-light transition-all shadow-xl shadow-brand-primary/20 self-start md:self-auto">
               Become a teacher
             </Link>
           </div>
@@ -514,7 +622,7 @@ export default function Home() {
           <div className="relative">
             <div
               ref={scrollRef}
-              className="flex gap-8 overflow-x-auto pb-12 pt-4 px-4 scroll-smooth no-scrollbar [mask-image:linear-gradient(to_right,transparent,white_5%,white_95%,transparent)]"
+              className="flex gap-8 overflow-x-auto pb-12 pt-4 px-4 scroll-smooth no-scrollbar md:[mask-image:linear-gradient(to_right,transparent,white_5%,white_95%,transparent)]"
               style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
             >
               {[
@@ -656,8 +764,8 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Centered Scroll Navigation Arrows Below */}
-            <div className="flex justify-center items-center gap-6 mt-8">
+            {/* Centered Scroll Navigation Arrows Below - Balanced Spacing */}
+            <div className="flex justify-center items-center gap-6 mt-4 mb-4 relative z-20">
               <button
                 onClick={() => scrollBy(-360)}
                 className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-[#0A4B92] border border-gray-100 hover:scale-110 hover:bg-[#0A4B92] hover:text-white transition-all active:scale-95 focus:outline-none focus:ring-0"
@@ -676,7 +784,7 @@ export default function Home() {
       </section>
 
       {/* Students Achievements Section - Reference Layout Refined */}
-      <section id="achievements" className="py-16 bg-white relative overflow-hidden">
+      <section id="achievements" className="py-16 relative overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
 
@@ -726,13 +834,12 @@ export default function Home() {
                 />
               </motion.div>
 
-              {/* Experience Highlight Badge (Floating Teal) */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.6 }}
-                className="absolute bottom-[5%] sm:bottom-[10%] left-[-5%] sm:left-[-10%] md:left-[-15%] bg-[#70C7C6] text-white p-4 sm:p-5 rounded-tr-[30px] rounded-bl-[30px] rounded-tl-lg rounded-br-lg shadow-lg z-30 max-w-[130px] sm:max-w-[150px] text-center"
+                className="absolute bottom-[5%] sm:bottom-[10%] left-0 sm:left-[-5%] md:left-[-10%] lg:left-[-15%] bg-brand-primary text-white p-4 sm:p-5 rounded-tr-[30px] rounded-bl-[30px] rounded-tl-lg rounded-br-lg shadow-lg z-30 max-w-[130px] sm:max-w-[150px] text-center"
               >
                 <div className="flex justify-center mb-1 sm:mb-2 text-white">
                   <Award size={24} className="sm:size-[28px]" />
@@ -748,12 +855,12 @@ export default function Home() {
             <div className="space-y-8">
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
-                  <span className="text-[#70C7C6] text-lg">💡</span>
-                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-[#70C7C6]">{mainAchievement.subtitle}</span>
+                  <span className="text-brand-primary text-lg">💡</span>
+                  <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-brand-primary">{mainAchievement.subtitle}</span>
                 </div>
                 <h2 className="text-3xl md:text-5xl font-display text-brand-text leading-[1.15] font-medium">
                   {mainAchievement.title.split('Inspires')[0]}
-                  <span className="text-[#70C7C6]">Inspires</span>
+                  <span className="text-brand-primary">Inspires</span>
                   {mainAchievement.title.split('Inspires')[1]}
                 </h2>
                 <p className="text-[13px] md:text-[14px] text-brand-text-muted leading-relaxed font-light max-w-xl">
@@ -767,7 +874,7 @@ export default function Home() {
                 <div className="md:col-span-7 space-y-6">
                   {achievementStats.map((stat, idx) => (
                     <div key={idx} className="flex gap-4 group">
-                      <div className="w-12 h-12 shrink-0 rounded-full bg-[#70C7C6]/10 flex items-center justify-center text-[#70C7C6] group-hover:bg-[#70C7C6] group-hover:text-white transition-all duration-300">
+                      <div className="w-12 h-12 shrink-0 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-all duration-300">
                         {stat.icon === 'GraduationCap' ? <GraduationCap size={24} /> : <Users size={24} />}
                       </div>
                       <div>
@@ -779,21 +886,21 @@ export default function Home() {
                 </div>
 
                 {/* Quote Block Column */}
-                <div className="md:col-span-5 bg-[#70C7C6]/5 p-6 rounded-[30px] relative overflow-hidden border border-[#70C7C6]/10">
+                <div className="md:col-span-5 bg-brand-primary/5 p-6 rounded-[30px] relative overflow-hidden border border-brand-primary/10">
                   <p className="text-[11px] text-brand-text-muted leading-relaxed relative z-10 italic">
                     {mainAchievement.quote}
                   </p>
-                  <span className="absolute bottom-1 right-3 text-5xl text-[#70C7C6]/20 font-serif leading-none italic select-none">99</span>
+                  <span className="absolute bottom-1 right-3 text-5xl text-brand-primary/20 font-serif leading-none italic select-none">99</span>
                 </div>
               </div>
 
               {/* Bottom Actions */}
               <div className="flex flex-wrap items-center gap-8 pt-2">
-                <Link to="/students-success" className="bg-[#70C7C6] text-white py-3.5 px-8 rounded-xl text-[11px] font-bold uppercase tracking-widest shadow-lg shadow-[#70C7C6]/20 hover:bg-[#5ba7a6] transition-all flex items-center gap-2">
+                <Link to="/students-success" className="bg-brand-primary text-white py-2.5 px-7 lg:py-3.5 lg:px-8 rounded-xl text-[10px] lg:text-[11px] font-bold uppercase tracking-widest shadow-lg shadow-brand-primary/20 hover:bg-brand-primary-light transition-all flex items-center gap-2">
                   View Success Stories <ArrowRight size={14} />
                 </Link>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-[#70C7C6] flex items-center justify-center text-white shadow-md">
+                  <div className="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-white shadow-md">
                     <Phone size={16} />
                   </div>
                   <div>
@@ -809,7 +916,7 @@ export default function Home() {
       </section>
 
       {/* Explore Courses Section */}
-      <section id="courses" className="py-24 bg-brand-surface relative overflow-hidden">
+      <section id="courses" className="pt-24 pb-12 lg:pb-16 relative overflow-hidden">
         <FloatingGrammarBg count={12} />
         <div className="container mx-auto px-4 mb-16 px-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -830,7 +937,7 @@ export default function Home() {
           <div className="relative">
             <div
               ref={courseScrollRef}
-              className="flex gap-6 overflow-x-auto pb-8 scroll-smooth no-scrollbar [mask-image:linear-gradient(to_right,transparent,white_5%,white_95%,transparent)] px-4"
+              className="flex gap-6 overflow-x-auto pb-8 scroll-smooth no-scrollbar md:[mask-image:linear-gradient(to_right,transparent,white_5%,white_95%,transparent)] px-4"
               style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
             >
               {courses.map((course, idx) => (
@@ -840,7 +947,7 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="min-w-full md:min-w-[calc(25%-18px)] snap-center bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group"
+                  className="min-w-full md:min-w-[calc(25%-18px)] snap-center bg-brand-surface rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col group"
                 >
                   {/* Card Image */}
                   <div className="relative aspect-[4/3] overflow-hidden">
@@ -848,7 +955,7 @@ export default function Home() {
                     <div className="absolute top-3 left-3 bg-[#0A4B92]/90 text-white px-3 py-1 rounded-full text-[10px] font-bold flex items-center gap-1.5 backdrop-blur-sm">
                       <Clock size={10} /> {course.duration}
                     </div>
-                    <button className="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors shadow-sm">
+                    <button className="absolute top-3 right-3 w-8 h-8 bg-brand-surface rounded-full flex items-center justify-center text-gray-400 hover:text-red-500 transition-colors shadow-sm">
                       <Heart size={14} />
                     </button>
                   </div>
@@ -888,17 +995,17 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Centered Scroll Controls Below */}
-            <div className="flex justify-center items-center gap-4 mt-8">
+            {/* Centered Scroll Controls Below - Balanced Spacing */}
+            <div className="flex justify-center items-center gap-4 mt-4 mb-10 relative z-20">
               <button
                 onClick={() => courseScrollRef.current?.scrollBy({ left: -300, behavior: 'smooth' })}
-                className="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-brand-primary border border-gray-100 hover:bg-brand-primary hover:text-white transition-all focus:outline-none"
+                className="w-10 h-10 bg-brand-surface rounded-full shadow-md flex items-center justify-center text-brand-primary border border-gray-100 hover:bg-brand-primary hover:text-white transition-all focus:outline-none"
               >
                 <ArrowLeft size={20} />
               </button>
               <button
                 onClick={() => courseScrollRef.current?.scrollBy({ left: 300, behavior: 'smooth' })}
-                className="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-brand-primary border border-gray-100 hover:bg-brand-primary hover:text-white transition-all focus:outline-none"
+                className="w-10 h-10 bg-brand-surface rounded-full shadow-md flex items-center justify-center text-brand-primary border border-gray-100 hover:bg-brand-primary hover:text-white transition-all focus:outline-none"
               >
                 <ArrowRight size={20} />
               </button>
@@ -907,50 +1014,179 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Highlights Section - Refined with 3D Effect & Standard Sizes */}
-      <section className="py-20 bg-brand-surface relative overflow-hidden">
-        <FloatingGrammarBg count={10} />
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.8 }}
-          className="container mx-auto px-4 mb-16 lg:mb-12 flex flex-col lg:flex-row lg:justify-between lg:items-end gap-8 lg:gap-10 text-center lg:text-left"
-        >
-          <div className="space-y-4">
-            <span className="text-brand-primary font-medium uppercase tracking-[0.2em] text-[10px]">Linguistic Advantage</span>
-            <h2 className="text-2xl md:text-3xl font-display text-brand-text max-w-xl font-medium leading-[1.3]">
-              Key Features That Set Us Apart <br /><span className="text-brand-primary italic">From The Rest</span>
-            </h2>
-          </div>
-          <Link to="/contact" className="btn-secondary py-2.5 px-8 text-sm font-medium border-b-4 border-r-4 border-brand-accent shadow-lg active:translate-y-1 active:border-b-0 transition-all flex-shrink-0">Book Free Demo</Link>
-        </motion.div>
+      {/* Key Features Section - Modern Bento Grid */}
+      <section className="py-12 lg:py-16 relative overflow-hidden">
+        <FloatingGrammarBg count={12} />
 
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {highlights.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className={`${item.bg} p-8 rounded-tl-[40px] rounded-br-[40px] rounded-tr-xl rounded-bl-xl shadow-xl hover:shadow-2xl transition-all duration-500 ease-out group relative overflow-hidden ${index % 2 === 0 ? 'hover:-translate-y-2 hover:translate-x-1 hover:rotate-1' : 'hover:-translate-y-2 hover:-translate-x-1 hover:-rotate-1'} hover:scale-[1.02] cursor-pointer`}
-            >
-              <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-brand-primary mb-6 transition-all group-hover:bg-brand-primary group-hover:text-white shadow-inner relative z-10">
-                <item.icon size={28} />
+        {/* Decorative background blurs */}
+        <div className="absolute top-1/4 left-0 w-80 h-80 bg-brand-primary/5 rounded-full blur-[80px] -translate-x-1/2" />
+        <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] bg-[#70C7C6]/5 rounded-full blur-[100px] translate-x-1/2" />
+
+        <div className="container mx-auto px-4 mb-10">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
+            <div className="space-y-3 max-w-2xl text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-primary/5 rounded-full border border-brand-primary/10">
+                <span className="text-[9px] font-bold text-brand-primary uppercase tracking-[0.2em]">The SAI Advantage</span>
               </div>
-              <h3 className="text-lg font-medium mb-3 text-brand-text group-hover:text-brand-primary transition-colors relative z-10">{item.title}</h3>
-              <p className="text-sm text-brand-text-muted leading-relaxed font-normal italic relative z-10 line-clamp-2">"{item.desc}"</p>
+              <h2 className="text-3xl md:text-4xl font-display text-brand-text font-bold tracking-tight leading-[1.1]">
+                Powerful Features Dedicated <br />
+                <span className="text-brand-primary italic">To Your Success</span>
+              </h2>
+            </div>
+            <Link to="/contact" className="lg:flex hidden items-center gap-3 bg-brand-text text-white py-2.5 px-7 lg:py-3.5 lg:px-7 rounded-xl font-bold text-[10px] lg:text-xs shadow-xl hover:bg-brand-primary transition-all group">
+              Book Free Demo
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
 
-              {/* Subtle accent hover */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-brand-primary/5 rounded-full blur-2xl group-hover:bg-brand-primary/10 transition-all" />
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid grid-cols-2 lg:grid-cols-12 gap-3 md:gap-5 auto-rows-[minmax(110px,_auto)]">
+
+            {/* Bento Card 1: Trained Faculty (Large Featured) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="col-span-2 lg:col-span-7 lg:row-span-2 bg-[#F1E9A3]/90 backdrop-blur-md rounded-[28px] lg:rounded-[32px] p-5 lg:p-8 flex flex-col justify-between border border-white/50 shadow-xl shadow-gray-200/40 group relative overflow-hidden"
+            >
+              <div className="space-y-3 lg:space-y-4 relative z-10">
+                <div className="w-10 h-10 lg:w-14 lg:h-14 bg-brand-surface rounded-xl lg:rounded-2xl flex items-center justify-center text-brand-primary shadow-md ring-4 ring-[#FEFAE0]">
+                  <GraduationCap size={22} className="lg:size-[28px]" />
+                </div>
+                <h3 className="text-xl lg:text-2xl font-bold text-brand-text leading-tight font-display">Trained Faculty</h3>
+                <p className="text-[11px] lg:text-[13px] text-brand-text-muted leading-relaxed max-w-md font-light">
+                  Expert grammar coaches and spoken trainers guide you through every nuance with personalized methodologies.
+                </p>
+              </div>
+              <div className="pt-4 lg:pt-6 relative z-10">
+                <div className="flex -space-x-2.5 mb-2 lg:mb-3">
+                  {[1, 2, 3, 4].map(i => (
+                    <div key={i} className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border-2 border-white overflow-hidden bg-gray-100">
+                      <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="" />
+                    </div>
+                  ))}
+                  <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full border-2 border-white bg-brand-primary flex items-center justify-center text-white text-[8px] lg:text-[9px] font-bold">
+                    +15
+                  </div>
+                </div>
+                <p className="text-[8px] lg:text-[9px] uppercase tracking-widest font-bold text-brand-primary">10+ Years Excellence</p>
+              </div>
+              <div className="absolute -bottom-16 -right-16 w-48 lg:w-56 h-48 lg:h-56 bg-white/30 rounded-full blur-3xl group-hover:bg-white/50 transition-colors" />
             </motion.div>
-          ))}
+
+            {/* Bento Card 2: Live Classes (Tall Featured) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="col-span-2 lg:col-span-5 lg:row-span-3 bg-[#C5E2CD]/90 backdrop-blur-md rounded-[28px] lg:rounded-[32px] p-5 lg:p-8 flex flex-col border border-white/50 shadow-xl shadow-gray-200/40 group relative overflow-hidden"
+            >
+              <div className="w-10 h-10 lg:w-14 lg:h-14 bg-brand-surface rounded-xl lg:rounded-2xl flex items-center justify-center text-green-600 shadow-md ring-4 ring-[#EAF6ED] mb-4 lg:mb-6">
+                <PlayCircle size={22} className="lg:size-[28px]" />
+              </div>
+              <div className="space-y-3 lg:space-y-4 mb-6 lg:mb-8">
+                <h3 className="text-xl lg:text-2xl font-bold text-brand-text leading-tight font-display">Live Interactive <br className="hidden lg:block" />Classes</h3>
+                <p className="text-[11px] lg:text-[13px] text-brand-text-muted leading-relaxed italic font-light">
+                  "Interaction with trainers and instant feedback for rapid progress."
+                </p>
+              </div>
+
+              <div className="mt-auto space-y-3">
+                <div className="h-1 bg-white/50 rounded-full overflow-hidden">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    whileInView={{ width: '85%' }}
+                    transition={{ duration: 1.5, delay: 0.5 }}
+                    className="h-full bg-green-500"
+                  />
+                </div>
+                <div className="flex justify-between text-[8px] lg:text-[9px] font-bold text-green-700 uppercase tracking-tight">
+                  <span>Capacity</span>
+                  <span>Limited Seats</span>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-green-500/10 pointer-events-none" />
+            </motion.div>
+
+            {/* Bento Card 3: Revision Support (Wide) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="col-span-1 lg:col-span-4 lg:row-span-2 bg-[#C7DBE0]/90 backdrop-blur-md rounded-[28px] lg:rounded-[32px] p-4 lg:p-6 border border-white/50 shadow-lg shadow-gray-200/40 flex flex-col justify-center relative overflow-hidden group"
+            >
+              <div className="flex items-start justify-between mb-2 lg:mb-4">
+                <div className="w-8 h-8 lg:w-11 lg:h-11 bg-brand-surface rounded-lg lg:rounded-2xl flex items-center justify-center text-blue-500 shadow-sm">
+                  <BookOpen size={16} className="lg:size-[20px]" />
+                </div>
+                <div className="px-1.5 py-0.5 bg-white/50 rounded-full text-[7px] lg:text-[8px] font-bold text-blue-700 uppercase tracking-wider">Weekly</div>
+              </div>
+              <h4 className="text-[15px] lg:text-lg font-bold text-brand-text mb-1 font-display">Revision Support</h4>
+              <p className="text-[10px] lg:text-[12px] text-brand-text-muted leading-tight lg:leading-relaxed line-clamp-2 font-light italic">
+                Portal-based revision sessions and premium materials.
+              </p>
+            </motion.div>
+
+            {/* Bento Card 4: Certificates (Squareish) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="col-span-1 lg:col-span-3 lg:row-span-2 bg-[#FBD1B5]/90 backdrop-blur-md rounded-[28px] lg:rounded-[32px] p-4 lg:p-6 border border-white/50 shadow-lg shadow-gray-200/40 flex flex-col items-center text-center justify-center space-y-2 lg:space-y-3 group"
+            >
+              <div className="w-10 h-10 lg:w-14 lg:h-14 bg-brand-surface rounded-full flex items-center justify-center text-orange-500 shadow-md group-hover:scale-110 transition-transform duration-500">
+                <Award size={22} className="lg:size-[28px]" />
+              </div>
+              <div>
+                <h4 className="text-[15px] lg:text-[17px] font-bold text-brand-text font-display leading-tight">Certification</h4>
+                <p className="text-[9px] lg:text-[11px] text-brand-text-muted leading-tight mt-1 lg:mt-1.5 font-light">Global recognized certificates.</p>
+              </div>
+            </motion.div>
+
+            {/* Bento Card 5: Franchise Option (Narrow Wide) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="col-span-1 lg:col-span-4 lg:row-span-1 bg-[#DFCDE2]/90 backdrop-blur-md rounded-[20px] lg:rounded-[24px] px-4 lg:px-6 py-3 lg:py-4 border border-white/50 shadow-lg shadow-gray-200/40 flex items-center gap-3 lg:gap-4 group"
+            >
+              <div className="w-8 h-8 lg:w-10 lg:h-10 shrink-0 bg-brand-surface rounded-lg lg:rounded-xl flex items-center justify-center text-purple-600 shadow-sm">
+                <Store size={16} className="lg:size-[20px]" />
+              </div>
+              <div>
+                <h4 className="text-[13px] lg:text-sm font-bold text-brand-text font-display">Franchise</h4>
+                <p className="text-[9px] lg:text-[10px] text-brand-text-muted line-clamp-1 font-light">Join our growing network.</p>
+              </div>
+            </motion.div>
+
+            {/* Bento Card 6: Special Batches (Narrow Wide) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="col-span-1 lg:col-span-4 lg:row-span-1 bg-[#F1E4A3]/90 backdrop-blur-md rounded-[20px] lg:rounded-[24px] px-4 lg:px-6 py-3 lg:py-4 border border-white/50 shadow-lg shadow-gray-200/40 flex items-center gap-3 lg:gap-4 group"
+            >
+              <div className="w-8 h-8 lg:w-10 lg:h-10 shrink-0 bg-brand-surface rounded-lg lg:rounded-xl flex items-center justify-center text-yellow-600 shadow-sm">
+                <Users size={16} className="lg:size-[20px]" />
+              </div>
+              <div>
+                <h4 className="text-[13px] lg:text-sm font-bold text-brand-text font-display">Batches</h4>
+                <p className="text-[9px] lg:text-[10px] text-brand-text-muted line-clamp-1 font-light">Homemakers & Students.</p>
+              </div>
+            </motion.div>
+
+          </div>
         </div>
       </section>
 
       {/* Franchise Callout - Refined with Physics-Accurate Broken Box */}
-      <section id="franchise" ref={franchiseRef} className="py-20 relative overflow-hidden bg-brand-surface/60">
+      <section id="franchise" ref={franchiseRef} className="py-20 relative overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -995,10 +1231,10 @@ export default function Home() {
                   Be a part of our success story. We provide complete professional training, study material, and regional support.
                 </p>
                 <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
-                  <Link to="/franchise" className="btn-primary py-3.5 px-8 text-sm font-bold shadow-xl shadow-brand-primary/20 border-b-4 border-r-4 border-brand-primary/40 active:translate-y-1 active:border-b-0 transition-all">
+                  <Link to="/franchise" className="btn-primary py-2.5 px-7 lg:py-3.5 lg:px-8 text-xs lg:text-sm font-bold shadow-xl shadow-brand-primary/20 border-b-4 border-r-4 border-brand-primary/40 active:translate-y-1 active:border-b-0 transition-all">
                     Get Franchise Details
                   </Link>
-                  <Link to="/contact" className="bg-white text-brand-primary border-2 border-brand-peach py-3.5 px-8 rounded-full text-sm font-bold hover:bg-brand-primary hover:text-white border-b-4 border-r-4 border-brand-peach active:translate-y-1 active:border-b-0 transition-all">
+                  <Link to="/contact" className="bg-white text-brand-primary border-2 border-brand-peach py-2.5 px-7 lg:py-3.5 lg:px-8 rounded-full text-xs lg:text-sm font-bold hover:bg-brand-primary hover:text-white border-b-4 border-r-4 border-brand-peach active:translate-y-1 active:border-b-0 transition-all">
                     Contact Now
                   </Link>
                 </div>
@@ -1028,7 +1264,7 @@ export default function Home() {
       </section>
 
       {/* Join Call to Action Section */}
-      <section className="py-24 bg-brand-surface text-center relative overflow-hidden">
+      <section className="pt-12 pb-6 md:py-24 relative overflow-hidden">
         <FloatingGrammarBg count={14} />
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -1041,10 +1277,10 @@ export default function Home() {
             "Stop letting the language barrier hold you back. Join us today and start your journey towards fluent English excellence."
           </p>
           <div className="flex flex-wrap justify-center gap-6 pt-4">
-            <Link to="/contact" className="btn-primary py-4 px-10 text-base flex items-center gap-3 font-bold border-b-4 border-r-4 border-brand-primary/40 active:translate-y-1 active:border-b-0 transition-all">
+            <Link to="/contact" className="btn-primary py-3 px-8 md:py-4 md:px-10 text-sm md:text-base flex items-center gap-3 font-bold border-b-4 border-r-4 border-brand-primary/40 active:translate-y-1 active:border-b-0 transition-all">
               Enroll Today <CircleCheck size={20} />
             </Link>
-            <a href="https://wa.me/+9198XXXXXXXX" target="_blank" className="flex items-center gap-3 px-10 py-4 rounded-full bg-green-500 text-white font-bold text-base hover:scale-105 border-b-4 border-r-4 border-green-700/50 shadow-lg active:translate-y-1 active:border-b-0 transition-all">
+            <a href="https://wa.me/+9198XXXXXXXX" target="_blank" className="flex items-center gap-3 px-8 py-3 md:px-10 md:py-4 rounded-full bg-green-500 text-white font-bold text-sm md:text-base hover:scale-105 border-b-4 border-r-4 border-green-700/50 shadow-lg active:translate-y-1 active:border-b-0 transition-all">
               <MessageSquare size={20} /> WhatsApp Us
             </a>
           </div>

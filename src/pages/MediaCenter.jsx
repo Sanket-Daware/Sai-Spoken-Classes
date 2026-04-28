@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Camera, Play, Calendar, Newspaper, ArrowRight, PlayCircle, Eye, Search, Filter, Image as ImageIcon, MapPin, Clock, Share2, Award, Users, Mic2 } from 'lucide-react'
+import { Camera, Play, Calendar, Newspaper, ArrowRight, PlayCircle, Eye, Search, Filter, Image as ImageIcon, MapPin, Clock, Share2, Award, Users, Mic2, X } from 'lucide-react'
 import { clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
@@ -60,13 +60,14 @@ const newsItems = [
 export default function MediaCenter() {
   const [activePhotoCat, setActivePhotoCat] = useState('all')
   const [selectedVideo, setSelectedVideo] = useState(null)
+  const [selectedImage, setSelectedImage] = useState(null)
 
   const filteredPhotos = activePhotoCat === 'all'
     ? photoGallery
     : photoGallery.filter(p => p.cat === activePhotoCat)
 
   return (
-    <div className="bg-[#FBFCFD] min-h-screen pb-20 overflow-x-hidden">
+    <div className="bg-[#FBFCFD] min-h-screen pb-4 md:pb-20 overflow-x-hidden">
 
       {/* Video Modal */}
       <AnimatePresence>
@@ -98,6 +99,43 @@ export default function MediaCenter() {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Photo Modal / Lightbox */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-xl"
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="relative max-w-4xl max-h-[85vh] flex flex-col items-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                onClick={() => setSelectedImage(null)}
+                className="absolute -top-12 right-0 p-2 text-white/70 hover:text-white transition-colors"
+              >
+                <X size={32} />
+              </button>
+              <img 
+                src={selectedImage.img} 
+                alt={selectedImage.title} 
+                className="w-full h-full object-contain rounded-xl shadow-2xl border-4 border-white/10"
+              />
+              <div className="mt-6 text-center">
+                 <p className="text-white font-display text-lg font-medium">{selectedImage.title}</p>
+                 <p className="text-[#E9C176] text-[10px] font-bold uppercase tracking-widest mt-1">{selectedImage.cat}</p>
+              </div>
             </motion.div>
           </motion.div>
         )}
@@ -168,7 +206,7 @@ export default function MediaCenter() {
 
         <motion.div 
            layout
-           className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4"
+           className="columns-2 md:columns-3 lg:columns-4 gap-3 sm:gap-4 space-y-3 sm:space-y-4"
         >
           <AnimatePresence mode="popLayout">
             {filteredPhotos.map((item, index) => (
@@ -180,9 +218,10 @@ export default function MediaCenter() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 whileHover={{ y: -5 }}
                 className={cn(
-                  "break-inside-avoid relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all border-2 border-white",
+                  "break-inside-avoid relative rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all border border-white sm:border-2 cursor-pointer group",
                   index % 3 === 0 ? "aspect-[3/4]" : index % 2 === 0 ? "aspect-square" : "aspect-[4/5]"
                 )}
+                onClick={() => setSelectedImage(item)}
               >
                 <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#061423]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
@@ -196,7 +235,7 @@ export default function MediaCenter() {
       </section>
 
       {/* 2. Video Gallery Section */}
-      <section className="py-24 bg-white border-y border-slate-100">
+      <section className="pt-12 pb-6 md:py-24 bg-white border-y border-slate-100">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
             <div className="space-y-3">
@@ -208,7 +247,7 @@ export default function MediaCenter() {
             </button>
           </div>
 
-          <div className="columns-1 sm:columns-2 lg:columns-4 gap-4 space-y-4">
+          <div className="columns-2 lg:columns-4 gap-3 sm:gap-4 space-y-4">
             {videos.map((v, index) => (
               <motion.div 
                  key={v.id} 
@@ -222,7 +261,7 @@ export default function MediaCenter() {
                 )}>
                    <img 
                       src={v.thumb} 
-                      className="w-full h-full object-cover grayscale transition-all group-hover:grayscale-0 group-hover:scale-105 duration-700" 
+                      className="w-full h-full object-cover grayscale-0 md:grayscale transition-all md:group-hover:grayscale-0 group-hover:scale-105 duration-700" 
                       title="Click to play" 
                    />
                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">

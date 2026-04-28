@@ -6,7 +6,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="relative bg-[#FAFAFA] pt-24 pb-6 font-sans border-t border-gray-100 overflow-hidden">
+    <footer className="relative bg-[#FAFAFA] pt-6 md:pt-24 pb-6 font-sans border-t border-gray-100 overflow-hidden">
       {/* Light Textured Background Layer */}
       <div 
         className="absolute inset-0 z-0 opacity-[0.04]"
@@ -19,18 +19,18 @@ export default function Footer() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[400px] bg-white/[0.6] rounded-[100%] blur-[80px] z-0 pointer-events-none" />
 
       <div className="container mx-auto px-6 md:px-8 lg:px-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 pt-8 pb-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 pt-2 md:pt-8 pb-4">
           
           {/* Column 1: Brand & Identity */}
-          <div className="space-y-8">
+          <div className="space-y-8 flex flex-col items-center md:items-start text-center md:text-left">
             <Link to="/" className="inline-block group outline-none transition-all duration-500 hover:scale-[1.02] active:scale-95">
               <img 
                 src={logo} 
                 alt="Sai Spoken Classes" 
-                className="h-16 md:h-20 w-auto object-contain brightness-100 contrast-110 drop-shadow-[0_10px_20px_rgba(0,0,0,0.05)]" 
+                className="h-24 md:h-20 w-auto object-contain brightness-100 contrast-110 drop-shadow-[0_10px_20px_rgba(0,0,0,0.05)]" 
               />
             </Link>
-            <p className="text-brand-text/70 leading-relaxed font-medium text-sm italic pr-4">
+            <p className="text-brand-text/70 leading-relaxed font-medium text-sm italic pr-0 md:pr-4">
               "Empowering students with confident English communication skills and professional personality development. Join a legacy of excellence since 20XX."
             </p>
             <div className="flex gap-3">

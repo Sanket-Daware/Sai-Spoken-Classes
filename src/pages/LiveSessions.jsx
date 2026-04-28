@@ -74,7 +74,7 @@ export default function LiveSessions() {
                <img 
                  src="https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=1374&auto=format&fit=crop" 
                  alt="Live stream thumbnail" 
-                 className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 opacity-20 group-hover:opacity-10 transition-all duration-1000 group-hover:scale-105" 
+                 className="absolute inset-0 w-full h-full object-cover grayscale-0 md:grayscale md:group-hover:grayscale-0 opacity-20 group-hover:opacity-10 transition-all duration-1000 group-hover:scale-105" 
                />
                
                <div className="relative z-10 text-center space-y-8 p-12">
